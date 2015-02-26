@@ -106,7 +106,40 @@
       <pubDate>Thu, 26 Feb 2015 13:27:48 -0800</pubDate>
       
       <guid>http://localhost:1313/tutorial/01introduction/</guid>
-      <description></description>
+      <description>
+
+&lt;h1 id=&#34;what-is-freedom-js-and-why-should-i-care:c671dff226dbd268b9535b226b05b473&#34;&gt;What is freedom.js, and why should I care?&lt;/h1&gt;
+
+&lt;h1 id=&#34;what-are-some-apps-that-have-been-built-using-freedom-js:c671dff226dbd268b9535b226b05b473&#34;&gt;What are some apps that have been built using freedom.js?&lt;/h1&gt;
+
+&lt;h1 id=&#34;tutorial-outline:c671dff226dbd268b9535b226b05b473&#34;&gt;Tutorial outline&lt;/h1&gt;
+
+&lt;p&gt;The tutorial steps through the development of Dorabella, mentioned
+above. If you&amp;rsquo;re a new developer then soldiering on in order is
+probably a good idea, but if you&amp;rsquo;re already comfortable with the
+JavaScript ecosystem then picking and choosing or skipping through may
+make sense. The topics of the remaining sections are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../02devsetup&#34;&gt;Dev Environment Setup&lt;/a&gt; - the basic commands you need to install
+freedom.js and related development tools&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../03howfreedomworks&#34;&gt;How freedom.js works&lt;/a&gt; - an explanation of the control and messaging
+flow of a freedom.js-powered application&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../04dorabelladesign&#34;&gt;Designing Dorabella&lt;/a&gt; - how to plan the structure and API of an app&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../05dorabellacore&#34;&gt;The core of Dorabella&lt;/a&gt; - once it&amp;rsquo;s planned, how to get started
+implementing the boilerplate and beyond&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../06dorabellachat&#34;&gt;Implementing chat&lt;/a&gt; - the main task of Dorabella, and a tour of the
+freedom.js social interface&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../07dorabellacrypto&#34;&gt;Using crypto in freedom.js&lt;/a&gt; - an important but sensitive part of
+development, also provided by freedom.js&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../08dorabellapolish&#34;&gt;Polishing Dorabella&lt;/a&gt; - testing, automation, and those other tweaks
+that make an app ready to go&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../09deploymentandbeyond&#34;&gt;Deployment and Beyond&lt;/a&gt; - now that the app is written, it&amp;rsquo;s time to
+get it out there&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../10howtohelpfreedom&#34;&gt;How to help freedom.js&lt;/a&gt; - we&amp;rsquo;re an open source project and welcome
+contributions!&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
   </channel>
