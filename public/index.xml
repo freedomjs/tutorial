@@ -19,7 +19,71 @@
 
 &lt;h1 id=&#34;what-is-freedom-js-and-why-should-i-care:c671dff226dbd268b9535b226b05b473&#34;&gt;What is freedom.js, and why should I care?&lt;/h1&gt;
 
+&lt;p&gt;freedom.js is a JavaScript framework that facilitates developing
+peer-to-peer (P2P) applications. These sorts of applications have
+been around for awhile and can be pretty nifty - they give the
+developer a low-cost way to scale up a resilient application, and
+they give users more control over their own data. But building them
+can be challenging, requiring a sophisticated understanding of
+networking and security. Doing so in the browser - the increasingly
+important yet constantly changing application platform - is even harder.&lt;/p&gt;
+
+&lt;p&gt;This is where freedom.js comes in - we provide a framework where
+common functionality (social, storage, network transport, etc.) has a
+standard interface and a suite of providers that run across typical
+JavaScript platforms (currently Chrome, Firefox, and Node.js). Want to
+write an app that lets people connect directly to each other in their
+browsers, choosing their friends from existing social networks?
+freedom.js takes care of the details, letting you focus on your
+application logic.&lt;/p&gt;
+
+&lt;p&gt;How does this work? You&amp;rsquo;ll learn more throughout the tutorial, but the
+core of it is that a freedom.js app specifies its API and dependencies
+via a manifest, and then freedom.js uses
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Web_worker&#34;&gt;web workers&lt;/a&gt; to run the
+application and related modules. These modules run independently and
+so must communicate (message passing via the specified API), but this
+isolation and abstraction allows for applications to run across
+computers and users - resulting in decentralized peer-to-peer applications.&lt;/p&gt;
+
+&lt;p&gt;freedom.js is open source
+(&lt;a href=&#34;http://opensource.org/licenses/Apache-2.0&#34;&gt;Apache License 2.0&lt;/a&gt;)
+and you can find our repositories on
+&lt;a href=&#34;https://github.com/freedomjs&#34;&gt;GitHub&lt;/a&gt;. We&amp;rsquo;re actively developing and
+enhancing the platform, and welcome community contributions. One of
+the best ways to get started is to just use freedom.js to develop an
+application - so think some about what you want to make, and read on!&lt;/p&gt;
+
 &lt;h1 id=&#34;what-are-some-apps-that-have-been-built-using-freedom-js:c671dff226dbd268b9535b226b05b473&#34;&gt;What are some apps that have been built using freedom.js?&lt;/h1&gt;
+
+&lt;p&gt;To get an idea of the sorts of things you can do with freedom.js, here
+are some existing applications:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Take Turns, Sally&lt;/strong&gt;
+(&lt;a href=&#34;https://github.com/ryscheng/taketurns&#34;&gt;repo&lt;/a&gt;,
+&lt;a href=&#34;http://taketurns.sally.wtf/&#34;&gt;app&lt;/a&gt;) - a freedom.js application that
+exposes a simple queue. Everyone in the meeting pops open their
+laptop/smartphone and navigates to the URL. Agree on a &amp;ldquo;room name&amp;rdquo; and
+choose 1 leader in the group. Then queue up to talk!&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;uProxy&lt;/strong&gt; (&lt;a href=&#34;https://github.com/uproxy&#34;&gt;repos&lt;/a&gt;,
+&lt;a href=&#34;https://www.uproxy.org/&#34;&gt;homepage&lt;/a&gt;) - a browser extension that lets
+users share alternative more secure routes to the Internet. It&amp;rsquo;s like
+a personalized VPN service that you set up for yourself and your
+friends. uProxy helps users protect each other from third parties who
+may try to watch, block, or redirect users&amp;rsquo; Internet connections.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dorabella&lt;/strong&gt; (links forthcoming) - an encrypted chat application,
+allowing users to generate and exchange asymmetric keys over a social
+channel of their choice and use them to secure their further
+communication. This is the application that we will build together in
+this tutorial - you&amp;rsquo;ll learn about social and cryptography providers,
+as well as general freedom.js module design and structure.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;freedom.js also has
+&lt;a href=&#34;http://www.freedomjs.org/dist/freedom/latest/demo/&#34;&gt;demo apps&lt;/a&gt; that
+can serve as useful examples while developing (including a chat demo
+that is the base of Dorabella).&lt;/p&gt;
 
 &lt;h1 id=&#34;tutorial-outline:c671dff226dbd268b9535b226b05b473&#34;&gt;Tutorial outline&lt;/h1&gt;
 
