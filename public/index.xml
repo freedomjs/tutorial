@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>freedom.js tutorial</title>
-    <link>http://localhost:1313/tutorial/</link>
+    <link>http://www.freedomjs.org/tutorial/</link>
     <description>Recent content on freedom.js tutorial</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 26 Feb 2015 13:29:48 -0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.freedomjs.org/tutorial/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>01 - Introduction</title>
-      <link>http://localhost:1313/tutorial/01introduction/</link>
+      <link>http://www.freedomjs.org/tutorial/01introduction/</link>
       <pubDate>Thu, 26 Feb 2015 13:29:48 -0800</pubDate>
       
-      <guid>http://localhost:1313/tutorial/01introduction/</guid>
+      <guid>http://www.freedomjs.org/tutorial/01introduction/</guid>
       <description>
 
 &lt;h1 id=&#34;what-is-freedom-js-and-why-should-i-care:c671dff226dbd268b9535b226b05b473&#34;&gt;What is freedom.js, and why should I care?&lt;/h1&gt;
@@ -117,10 +117,10 @@ contributions!&lt;/li&gt;
     
     <item>
       <title>02 - Dev Environment Setup</title>
-      <link>http://localhost:1313/tutorial/02devsetup/</link>
+      <link>http://www.freedomjs.org/tutorial/02devsetup/</link>
       <pubDate>Thu, 26 Feb 2015 13:28:59 -0800</pubDate>
       
-      <guid>http://localhost:1313/tutorial/02devsetup/</guid>
+      <guid>http://www.freedomjs.org/tutorial/02devsetup/</guid>
       <description>
 
 &lt;h1 id=&#34;quick-start:649baccfa024a46ec6ccf587bf61cd3c&#34;&gt;Quick Start&lt;/h1&gt;
@@ -194,10 +194,10 @@ about freedom.js itself!&lt;/p&gt;
     
     <item>
       <title>03 - How freedom.js works</title>
-      <link>http://localhost:1313/tutorial/03howfreedomworks/</link>
+      <link>http://www.freedomjs.org/tutorial/03howfreedomworks/</link>
       <pubDate>Thu, 26 Feb 2015 13:27:01 -0800</pubDate>
       
-      <guid>http://localhost:1313/tutorial/03howfreedomworks/</guid>
+      <guid>http://www.freedomjs.org/tutorial/03howfreedomworks/</guid>
       <description>
 
 &lt;p&gt;&lt;em&gt;Note&lt;/em&gt; - this section isn&amp;rsquo;t integral to just building a simple app,
@@ -272,73 +272,73 @@ as how most users keep track of and communicate with their friends.&lt;/p&gt;
     
     <item>
       <title>04 - Designing Dorabella</title>
-      <link>http://localhost:1313/tutorial/04dorabelladesign/</link>
+      <link>http://www.freedomjs.org/tutorial/04dorabelladesign/</link>
       <pubDate>Thu, 26 Feb 2015 13:26:05 -0800</pubDate>
       
-      <guid>http://localhost:1313/tutorial/04dorabelladesign/</guid>
+      <guid>http://www.freedomjs.org/tutorial/04dorabelladesign/</guid>
       <description></description>
     </item>
     
     <item>
       <title>05 - The core of Dorabella</title>
-      <link>http://localhost:1313/tutorial/05dorabellacore/</link>
+      <link>http://www.freedomjs.org/tutorial/05dorabellacore/</link>
       <pubDate>Thu, 26 Feb 2015 13:25:07 -0800</pubDate>
       
-      <guid>http://localhost:1313/tutorial/05dorabellacore/</guid>
+      <guid>http://www.freedomjs.org/tutorial/05dorabellacore/</guid>
       <description></description>
     </item>
     
     <item>
       <title>06 - Implementing chat</title>
-      <link>http://localhost:1313/tutorial/06dorabellachat/</link>
+      <link>http://www.freedomjs.org/tutorial/06dorabellachat/</link>
       <pubDate>Thu, 26 Feb 2015 13:24:09 -0800</pubDate>
       
-      <guid>http://localhost:1313/tutorial/06dorabellachat/</guid>
+      <guid>http://www.freedomjs.org/tutorial/06dorabellachat/</guid>
       <description></description>
     </item>
     
     <item>
       <title>07 - Using crypto in freedom.js</title>
-      <link>http://localhost:1313/tutorial/07dorabellacrypto/</link>
+      <link>http://www.freedomjs.org/tutorial/07dorabellacrypto/</link>
       <pubDate>Thu, 26 Feb 2015 13:23:10 -0800</pubDate>
       
-      <guid>http://localhost:1313/tutorial/07dorabellacrypto/</guid>
+      <guid>http://www.freedomjs.org/tutorial/07dorabellacrypto/</guid>
       <description></description>
     </item>
     
     <item>
       <title>08 - Polishing Dorabella</title>
-      <link>http://localhost:1313/tutorial/08dorabellapolish/</link>
+      <link>http://www.freedomjs.org/tutorial/08dorabellapolish/</link>
       <pubDate>Thu, 26 Feb 2015 13:22:19 -0800</pubDate>
       
-      <guid>http://localhost:1313/tutorial/08dorabellapolish/</guid>
+      <guid>http://www.freedomjs.org/tutorial/08dorabellapolish/</guid>
       <description></description>
     </item>
     
     <item>
       <title>09 - Deployment and Beyond</title>
-      <link>http://localhost:1313/tutorial/09deploymentandbeyond/</link>
+      <link>http://www.freedomjs.org/tutorial/09deploymentandbeyond/</link>
       <pubDate>Thu, 26 Feb 2015 13:21:22 -0800</pubDate>
       
-      <guid>http://localhost:1313/tutorial/09deploymentandbeyond/</guid>
+      <guid>http://www.freedomjs.org/tutorial/09deploymentandbeyond/</guid>
       <description></description>
     </item>
     
     <item>
       <title>10 - How to help freedom.js</title>
-      <link>http://localhost:1313/tutorial/10howtohelpfreedom/</link>
+      <link>http://www.freedomjs.org/tutorial/10howtohelpfreedom/</link>
       <pubDate>Thu, 26 Feb 2015 13:20:23 -0800</pubDate>
       
-      <guid>http://localhost:1313/tutorial/10howtohelpfreedom/</guid>
+      <guid>http://www.freedomjs.org/tutorial/10howtohelpfreedom/</guid>
       <description></description>
     </item>
     
     <item>
       <title>License</title>
-      <link>http://localhost:1313/tutorial/license/</link>
+      <link>http://www.freedomjs.org/tutorial/license/</link>
       <pubDate>Thu, 26 Feb 2015 13:19:37 -0800</pubDate>
       
-      <guid>http://localhost:1313/tutorial/license/</guid>
+      <guid>http://www.freedomjs.org/tutorial/license/</guid>
       <description>&lt;p&gt;TBD&lt;/p&gt;
 </description>
     </item>
