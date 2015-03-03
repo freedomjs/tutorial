@@ -198,7 +198,76 @@ about freedom.js itself!&lt;/p&gt;
       <pubDate>Thu, 26 Feb 2015 13:27:01 -0800</pubDate>
       
       <guid>http://localhost:1313/tutorial/03howfreedomworks/</guid>
-      <description></description>
+      <description>
+
+&lt;p&gt;&lt;em&gt;Note&lt;/em&gt; - this section isn&amp;rsquo;t integral to just building a simple app,
+ but is is valuable to get a slightly deeper understanding of the
+ stack you are building on. You can
+ &lt;a href=&#34;../04dorabelladesign&#34;&gt;safely skip to the next section&lt;/a&gt; if you wish,
+ and potentially revisit here for reference as needed.&lt;/p&gt;
+
+&lt;h1 id=&#34;understanding-the-boilerplate:ff6dd0f49b1ab8997b1c6fae35d70872&#34;&gt;Understanding the boilerplate&lt;/h1&gt;
+
+&lt;p&gt;Regardless of how you chose to &lt;a href=&#34;../02devsetup&#34;&gt;do your dev setup&lt;/a&gt;,
+you should now have a file hierarchy that looks something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;src/index.html
+src/main.js
+src/manifest.json
+src/static/style.css
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;These files are your freedom.js module - they specify layout/browser
+logic (&lt;code&gt;index.html&lt;/code&gt;), freedom.js application logic (&lt;code&gt;main.js&lt;/code&gt;),
+freedom.js API and dependencies/permissions (&lt;code&gt;manifest.json&lt;/code&gt;), and
+styling or other static resources such as graphics (&lt;code&gt;static/&lt;/code&gt;). In the
+above list they all live off of &lt;code&gt;src/&lt;/code&gt; to reflect that they are the
+sourcecode view of your application - they may later be linted,
+minified, and copied to e.g. &lt;code&gt;build/&lt;/code&gt; (to eventually be deployed).&lt;/p&gt;
+
+&lt;p&gt;TODO more explanation for how above files interact.&lt;/p&gt;
+
+&lt;p&gt;Depending on your choice of tooling, you may also have files like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Gruntfile.js
+node_modules/...
+package.json
+.gitignore
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;These are best understood by looking up their respective
+documentation, as described below.&lt;/p&gt;
+
+&lt;h1 id=&#34;other-resources:ff6dd0f49b1ab8997b1c6fae35d70872&#34;&gt;Other resources&lt;/h1&gt;
+
+&lt;p&gt;Any piece of computer technology is inevitably built on a deep stack
+eventually going down to &lt;a href=&#34;http://xkcd.com/1349/&#34;&gt;sand and physics&lt;/a&gt; -
+this tutorial focuses on giving you enough knowledge and context to
+develop freedom.js modules, but should you find yourself wanting to
+dig deeper then here are some places to start:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom/wiki&#34;&gt;freedom.js wiki&lt;/a&gt; - more
+documentation and API reference&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.npmjs.com/&#34;&gt;npm docs&lt;/a&gt; - more on how to both get
+packages from npm and deploy your own&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://git-scm.com/&#34;&gt;git&lt;/a&gt; - there&amp;rsquo;s many tutorials out there, but
+&lt;a href=&#34;http://jwiegley.github.io/git-from-the-bottom-up/&#34;&gt;Git from the Bottom Up&lt;/a&gt;
+is a fine place to get started, and &lt;a href=&#34;http://try.github.io&#34;&gt;tryGit&lt;/a&gt;
+is a quick interactive tutorial&lt;/li&gt;
+&lt;li&gt;TODO more&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It&amp;rsquo;s also valuable to learn about developing &amp;ldquo;normal&amp;rdquo; (centralized)
+web applications. freedom.js requires thinking differently (especially
+about data storage and peer communication), but it&amp;rsquo;s useful to
+understand both perspectives. There is actually a fair amount of skill
+overlap (understanding templates, network requests, etc.), and for
+many &amp;ldquo;real-world&amp;rdquo; use cases a hybrid approach of centralized and
+decentralized may be best. We will see this in the design of
+Dorabella, which pragmatically depends on centralized social networks
+as how most users keep track of and communicate with their friends.&lt;/p&gt;
+</description>
     </item>
     
     <item>
