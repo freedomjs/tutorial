@@ -80,6 +80,74 @@
   <div class="post">
     <h1>02 - Dev Environment Setup</h1>
     
+
+<h1 id="quick-start:649baccfa024a46ec6ccf587bf61cd3c">Quick Start</h1>
+
+<p>Already comfortable with modern JavaScript development? Then you can
+easily get started by using <a href="http://yeoman.io">Yeoman</a>:</p>
+
+<pre><code>npm install -g yo  # if you don't have yo already
+npm install -g generator-freedom
+mkdir my-freedom-app
+cd my-freedom-app
+yo freedom
+</code></pre>
+
+<p>Or if you prefer pulling in boilerplate with git:</p>
+
+<pre><code>TODO
+</code></pre>
+
+<p>If you&rsquo;re set, skip ahead to
+<a href="../03howfreedomworks">how freedom.js works</a>. Need a bit more
+explanation on the above? Read on!</p>
+
+<h1 id="details:649baccfa024a46ec6ccf587bf61cd3c">Details</h1>
+
+<p>Strictly speaking, all you need to develop with freedom.js is the
+<a href="http://www.freedomjs.org/dist/freedom/latest/freedom.js">library itself</a>,
+a browser, and a web server (for example,
+<a href="https://docs.python.org/2/library/simplehttpserver.html">SimpleHTTPServer</a>
+for Python 2.x). You are welcome to take this minimalist approach,
+though you may want to at least
+<a href="http://TODO">clone the starter git repository</a> for boilerplate.</p>
+
+<p>An arguably more convenient setup is to embrace the modern JavaScript
+ecosystem. There are many tools and it can be overwhelming at first,
+but you really just need to familiarize yourself with a few of them to
+get started:</p>
+
+<ul>
+<li><a href="https://www.npmjs.com/">npm</a> - a package manager (installed from
+<a href="http://nodejs.org/">nodejs.org</a>), lets you fetch freedom.js and
+related modules/dependencies/tooling</li>
+<li><a href="http://gruntjs.com/">grunt</a> - a task runner, facilitates linting,
+building, testing, and deploying projects</li>
+<li>&hellip; (TODO testing, maybe alternatives like gulp, etc.)</li>
+</ul>
+
+<p>freedom.js is agnostic about the tools you use, but our provided
+generators and scripts generally assume use of npm, grunt, TODO (tests
+etc.). Getting started means
+<a href="https://docs.npmjs.com/getting-started/installing-node">installing node and npm</a>,
+then running a variety of <code>npm install</code> commands. The common tools
+you&rsquo;ll use across projects should be installed globally (<code>-g</code>), e.g.:</p>
+
+<pre><code>npm install -g grunt-cli
+</code></pre>
+
+<p>Projects themselves can have their own <code>package.json</code> file that
+specifies dependencies, which are installed locally by simply running
+<code>npm install</code> in that directory. Once you&rsquo;ve set up your project this
+way (and have a <a href="http://gruntjs.com/sample-gruntfile">Gruntfile</a> - an
+initial one is provided by our generator) you can run <code>grunt -h</code> to
+see the available Grunt tasks. They are run with <code>grunt taskname</code>, or
+just <code>grunt</code> for the default task. You can also dive into
+<code>Gruntfile.js</code> and edit or add your own tasks.</p>
+
+<p>Once you have your setup to your liking, continue on and learn more
+about freedom.js itself!</p>
+
   </div>
   
     <a href="http://localhost:1313/tutorial/01introduction/">01 - Introduction</a>

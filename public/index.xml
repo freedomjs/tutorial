@@ -121,7 +121,75 @@ contributions!&lt;/li&gt;
       <pubDate>Thu, 26 Feb 2015 13:28:59 -0800</pubDate>
       
       <guid>http://localhost:1313/tutorial/02devsetup/</guid>
-      <description></description>
+      <description>
+
+&lt;h1 id=&#34;quick-start:649baccfa024a46ec6ccf587bf61cd3c&#34;&gt;Quick Start&lt;/h1&gt;
+
+&lt;p&gt;Already comfortable with modern JavaScript development? Then you can
+easily get started by using &lt;a href=&#34;http://yeoman.io&#34;&gt;Yeoman&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;npm install -g yo  # if you don&#39;t have yo already
+npm install -g generator-freedom
+mkdir my-freedom-app
+cd my-freedom-app
+yo freedom
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or if you prefer pulling in boilerplate with git:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;TODO
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you&amp;rsquo;re set, skip ahead to
+&lt;a href=&#34;../03howfreedomworks&#34;&gt;how freedom.js works&lt;/a&gt;. Need a bit more
+explanation on the above? Read on!&lt;/p&gt;
+
+&lt;h1 id=&#34;details:649baccfa024a46ec6ccf587bf61cd3c&#34;&gt;Details&lt;/h1&gt;
+
+&lt;p&gt;Strictly speaking, all you need to develop with freedom.js is the
+&lt;a href=&#34;http://www.freedomjs.org/dist/freedom/latest/freedom.js&#34;&gt;library itself&lt;/a&gt;,
+a browser, and a web server (for example,
+&lt;a href=&#34;https://docs.python.org/2/library/simplehttpserver.html&#34;&gt;SimpleHTTPServer&lt;/a&gt;
+for Python 2.x). You are welcome to take this minimalist approach,
+though you may want to at least
+&lt;a href=&#34;http://TODO&#34;&gt;clone the starter git repository&lt;/a&gt; for boilerplate.&lt;/p&gt;
+
+&lt;p&gt;An arguably more convenient setup is to embrace the modern JavaScript
+ecosystem. There are many tools and it can be overwhelming at first,
+but you really just need to familiarize yourself with a few of them to
+get started:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.npmjs.com/&#34;&gt;npm&lt;/a&gt; - a package manager (installed from
+&lt;a href=&#34;http://nodejs.org/&#34;&gt;nodejs.org&lt;/a&gt;), lets you fetch freedom.js and
+related modules/dependencies/tooling&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://gruntjs.com/&#34;&gt;grunt&lt;/a&gt; - a task runner, facilitates linting,
+building, testing, and deploying projects&lt;/li&gt;
+&lt;li&gt;&amp;hellip; (TODO testing, maybe alternatives like gulp, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;freedom.js is agnostic about the tools you use, but our provided
+generators and scripts generally assume use of npm, grunt, TODO (tests
+etc.). Getting started means
+&lt;a href=&#34;https://docs.npmjs.com/getting-started/installing-node&#34;&gt;installing node and npm&lt;/a&gt;,
+then running a variety of &lt;code&gt;npm install&lt;/code&gt; commands. The common tools
+you&amp;rsquo;ll use across projects should be installed globally (&lt;code&gt;-g&lt;/code&gt;), e.g.:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;npm install -g grunt-cli
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Projects themselves can have their own &lt;code&gt;package.json&lt;/code&gt; file that
+specifies dependencies, which are installed locally by simply running
+&lt;code&gt;npm install&lt;/code&gt; in that directory. Once you&amp;rsquo;ve set up your project this
+way (and have a &lt;a href=&#34;http://gruntjs.com/sample-gruntfile&#34;&gt;Gruntfile&lt;/a&gt; - an
+initial one is provided by our generator) you can run &lt;code&gt;grunt -h&lt;/code&gt; to
+see the available Grunt tasks. They are run with &lt;code&gt;grunt taskname&lt;/code&gt;, or
+just &lt;code&gt;grunt&lt;/code&gt; for the default task. You can also dive into
+&lt;code&gt;Gruntfile.js&lt;/code&gt; and edit or add your own tasks.&lt;/p&gt;
+
+&lt;p&gt;Once you have your setup to your liking, continue on and learn more
+about freedom.js itself!&lt;/p&gt;
+</description>
     </item>
     
     <item>
