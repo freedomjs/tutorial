@@ -4,8 +4,8 @@ menu = "main"
 title = "03 - How freedom.js works"
 +++
 
-*Note* - this section isn't integral to just building a simple app,
- but is is valuable to get a slightly deeper understanding of the
+*Note* - this section isn't integral to building a simple app,
+ but it is valuable to get a slightly deeper understanding of the
  stack you are building on. You can
  [safely skip to the next section](../04dorabelladesign) if you wish,
  and potentially revisit here for reference as needed.
