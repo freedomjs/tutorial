@@ -57,8 +57,7 @@ a personalized VPN service that you set up for yourself and your
 friends. uProxy helps users protect each other from third parties who
 may try to watch, block, or redirect users' Internet connections.
 - **Dorabella** (links forthcoming) - an encrypted chat application,
-allowing users to generate and exchange asymmetric keys over a social
-channel of their choice and use them to secure their further
+allowing users to generate and exchange keys to secure their further
 communication. This is the application that we will build together in
 this tutorial - you'll learn about social and cryptography providers,
 as well as general freedom.js module design and structure.
