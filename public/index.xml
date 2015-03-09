@@ -20,13 +20,14 @@
 &lt;h1 id=&#34;what-is-freedom-js-and-why-should-i-care:c671dff226dbd268b9535b226b05b473&#34;&gt;What is freedom.js, and why should I care?&lt;/h1&gt;
 
 &lt;p&gt;freedom.js is a JavaScript framework that facilitates developing
-peer-to-peer (P2P) applications. These sorts of applications have
-been around for awhile and can be pretty nifty - they give the
-developer a low-cost way to scale up a resilient application, and
-they give users more control over their own data. But building them
-can be challenging, requiring a sophisticated understanding of
-networking and security. Doing so in the browser - the increasingly
-important yet constantly changing application platform - is even harder.&lt;/p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Peer-to-peer&#34;&gt;peer-to-peer (P2P)&lt;/a&gt;
+applications. These sorts of applications have been around for awhile
+and can be pretty nifty - they give the developer a low-cost way to
+scale up a resilient application, and they give users more control
+over their own data. But building them can be challenging, requiring a
+sophisticated understanding of networking and security. Doing so in
+the browser - the increasingly important yet constantly changing
+application platform - is even harder.&lt;/p&gt;
 
 &lt;p&gt;This is where freedom.js comes in - we provide a framework where
 common functionality (social, storage, network transport, etc.) has a
@@ -221,7 +222,7 @@ logic (&lt;code&gt;index.html&lt;/code&gt;), freedom.js application logic (&lt;c
 freedom.js API and dependencies/permissions (&lt;code&gt;manifest.json&lt;/code&gt;), and
 styling or other static resources such as graphics (&lt;code&gt;static/&lt;/code&gt;). In the
 above list they all live off of &lt;code&gt;src/&lt;/code&gt; to reflect that they are the
-sourcecode view of your application - they may later be linted,
+source code view of your application - they may later be linted,
 minified, and copied to e.g. &lt;code&gt;build/&lt;/code&gt; (to eventually be deployed).&lt;/p&gt;
 
 &lt;p&gt;TODO more explanation for how above files interact.&lt;/p&gt;
@@ -257,12 +258,12 @@ is a quick interactive tutorial&lt;/li&gt;
 &lt;li&gt;TODO more&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;It&amp;rsquo;s also valuable to learn about developing &amp;ldquo;normal&amp;rdquo; (centralized)
+&lt;p&gt;It&amp;rsquo;s also valuable to learn about developing traditional (centralized)
 web applications. freedom.js requires thinking differently (especially
 about data storage and peer communication), but it&amp;rsquo;s useful to
-understand both perspectives. There is actually a fair amount of skill
-overlap (understanding templates, network requests, etc.), and for
-many &amp;ldquo;real-world&amp;rdquo; use cases a hybrid approach of centralized and
+understand both perspectives. There is a fair amount of skill overlap
+(understanding templates, network requests, etc.), and for many
+&amp;ldquo;real-world&amp;rdquo; use cases a hybrid approach of centralized and
 decentralized may be best. We will see this in the design of
 Dorabella, which pragmatically depends on centralized social networks
 as how most users keep track of and communicate with their friends.&lt;/p&gt;
@@ -353,12 +354,12 @@ for updates and discussion.&lt;/p&gt;
 
 &lt;h1 id=&#34;develop-freedom-js-providers:0d9f956dd8c7479f16894b65123eba61&#34;&gt;Develop freedom.js providers&lt;/h1&gt;
 
-&lt;p&gt;freedom.js provides basic providers for all its interfaces, but you
-can also create new providers that satisfy the same interfaces,
-expanding the realm of freedom.js functionality. For instance, a new
-social provider compatible with the latest hip social network would
-allow freedom.js apps (old and new) to seamlessly adopt it as an
-alternative to the existing social network providers.&lt;/p&gt;
+&lt;p&gt;freedom.js includes providers for all its interfaces, but you can also
+create new providers that satisfy the same interfaces, expanding the
+realm of freedom.js functionality. For instance, a new social provider
+compatible with the latest hip social network would allow freedom.js
+apps (old and new) to seamlessly adopt it as an alternative to the
+existing social network providers.&lt;/p&gt;
 
 &lt;h1 id=&#34;contribute-to-freedom-js:0d9f956dd8c7479f16894b65123eba61&#34;&gt;Contribute to freedom.js&lt;/h1&gt;
 
