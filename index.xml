@@ -330,7 +330,49 @@ as how most users keep track of and communicate with their friends.&lt;/p&gt;
       <pubDate>Thu, 26 Feb 2015 13:20:23 -0800</pubDate>
       
       <guid>http://www.freedomjs.org/tutorial/10howtohelpfreedom/</guid>
-      <description></description>
+      <description>
+
+&lt;h1 id=&#34;make-an-app:0d9f956dd8c7479f16894b65123eba61&#34;&gt;Make an app!&lt;/h1&gt;
+
+&lt;p&gt;The single best thing you can do for freedom.js is to use the
+knowledge you&amp;rsquo;ve gained from this tutorial and go out and make
+something - any app, large or small, that is built to enable
+decentralization makes the entire decentralized ecosystem stronger. So
+go out and create, whether it&amp;rsquo;s a game or a tool, a quick hack or a
+longterm project, and share your creation with the world.&lt;/p&gt;
+
+&lt;h1 id=&#34;give-us-feedback:0d9f956dd8c7479f16894b65123eba61&#34;&gt;Give us feedback&lt;/h1&gt;
+
+&lt;p&gt;As you&amp;rsquo;re making an app you may think of things you wish were
+different about freedom.js - maybe a new feature it could support,
+or a bug that should be
+fixed. &lt;a href=&#34;https://github.com/freedomjs/freedom/issues&#34;&gt;GitHub issues&lt;/a&gt;
+are our preferred workflow for this sort of feedback, and we also have
+a
+&lt;a href=&#34;https://groups.google.com/forum/#!forum/freedomjs-users&#34;&gt;freedomjs-users Google group&lt;/a&gt;
+for updates and discussion.&lt;/p&gt;
+
+&lt;h1 id=&#34;develop-freedom-js-providers:0d9f956dd8c7479f16894b65123eba61&#34;&gt;Develop freedom.js providers&lt;/h1&gt;
+
+&lt;p&gt;freedom.js provides basic providers for all its interfaces, but you
+can also create new providers that satisfy the same interfaces,
+expanding the realm of freedom.js functionality. For instance, a new
+social provider compatible with the latest hip social network would
+allow freedom.js apps (old and new) to seamlessly adopt it as an
+alternative to the existing social network providers.&lt;/p&gt;
+
+&lt;h1 id=&#34;contribute-to-freedom-js:0d9f956dd8c7479f16894b65123eba61&#34;&gt;Contribute to freedom.js&lt;/h1&gt;
+
+&lt;p&gt;freedom.js is developed in the open across our
+&lt;a href=&#34;https://github.com/freedomjs&#34;&gt;GitHub repos&lt;/a&gt;, and we welcome
+&lt;a href=&#34;https://github.com/freedomjs/freedom/pulls&#34;&gt;pull requests&lt;/a&gt; with
+contributions. Note that contributions to the core of freedom.js are
+different from writing your own providers - they should be something
+that is useful to all freedom.js users (such as a bugfix or new
+compatibility shim).&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading, and Hack On!&lt;/p&gt;
+</description>
     </item>
     
     <item>
