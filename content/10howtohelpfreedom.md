@@ -23,12 +23,12 @@ a
 for updates and discussion.
 
 # Develop freedom.js providers
-freedom.js provides basic providers for all its interfaces, but you
-can also create new providers that satisfy the same interfaces,
-expanding the realm of freedom.js functionality. For instance, a new
-social provider compatible with the latest hip social network would
-allow freedom.js apps (old and new) to seamlessly adopt it as an
-alternative to the existing social network providers.
+freedom.js includes providers for all its interfaces, but you can also
+create new providers that satisfy the same interfaces, expanding the
+realm of freedom.js functionality. For instance, a new social provider
+compatible with the latest hip social network would allow freedom.js
+apps (old and new) to seamlessly adopt it as an alternative to the
+existing social network providers.
 
 # Contribute to freedom.js
 freedom.js is developed in the open across our

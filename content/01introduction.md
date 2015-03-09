@@ -6,13 +6,14 @@ title = "01 - Introduction"
 
 # What is freedom.js, and why should I care?
 freedom.js is a JavaScript framework that facilitates developing
-peer-to-peer (P2P) applications. These sorts of applications have
-been around for awhile and can be pretty nifty - they give the
-developer a low-cost way to scale up a resilient application, and
-they give users more control over their own data. But building them
-can be challenging, requiring a sophisticated understanding of
-networking and security. Doing so in the browser - the increasingly
-important yet constantly changing application platform - is even harder.
+[peer-to-peer (P2P)](https://en.wikipedia.org/wiki/Peer-to-peer)
+applications. These sorts of applications have been around for awhile
+and can be pretty nifty - they give the developer a low-cost way to
+scale up a resilient application, and they give users more control
+over their own data. But building them can be challenging, requiring a
+sophisticated understanding of networking and security. Doing so in
+the browser - the increasingly important yet constantly changing
+application platform - is even harder.
 
 This is where freedom.js comes in - we provide a framework where
 common functionality (social, storage, network transport, etc.) has a

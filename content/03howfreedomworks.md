@@ -24,7 +24,7 @@ logic (`index.html`), freedom.js application logic (`main.js`),
 freedom.js API and dependencies/permissions (`manifest.json`), and
 styling or other static resources such as graphics (`static/`). In the
 above list they all live off of `src/` to reflect that they are the
-sourcecode view of your application - they may later be linted,
+source code view of your application - they may later be linted,
 minified, and copied to e.g. `build/` (to eventually be deployed).
 
 TODO more explanation for how above files interact.
@@ -56,12 +56,12 @@ is a fine place to get started, and [tryGit](http://try.github.io)
 is a quick interactive tutorial
 - TODO more
 
-It's also valuable to learn about developing "normal" (centralized)
+It's also valuable to learn about developing traditional (centralized)
 web applications. freedom.js requires thinking differently (especially
 about data storage and peer communication), but it's useful to
-understand both perspectives. There is actually a fair amount of skill
-overlap (understanding templates, network requests, etc.), and for
-many "real-world" use cases a hybrid approach of centralized and
+understand both perspectives. There is a fair amount of skill overlap
+(understanding templates, network requests, etc.), and for many
+"real-world" use cases a hybrid approach of centralized and
 decentralized may be best. We will see this in the design of
 Dorabella, which pragmatically depends on centralized social networks
 as how most users keep track of and communicate with their friends.
