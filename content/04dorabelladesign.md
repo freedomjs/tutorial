@@ -84,33 +84,33 @@ information the freedom.js module is sending to the outer page.
     <th>Value(s)</th>
   </tr>
   <tr>
-    <td>`send`</td>
+    <td><pre>send</pre></td>
     <td>method</td>
     <td>Use the social provider to send a message to a target buddy</td>
     <td>one string corresponding to targetBuddy (who to send the message to)
         and another string for the message itself</td>
   </tr>
   <tr>
-    <td>`recv-status`</td>
+    <td><pre>recv-status</pre></td>
     <td>event</td>
     <td>*Local* user status - tell the outer JavaScript whether the social
         provider is online or offline</td>
     <td>string</td>
   </tr>
   <tr>
-    <td>`recv-uid`</td>
+    <td><pre>recv-uid</pre></td>
     <td>event</td>
     <td>Once online, tell the outer JavaScript the local user name/ID</td>
     <td>string</td>
   </tr>
   <tr>
-    <td>`recv-err`</td>
+    <td><pre>recv-err</pre></td>
     <td>event</td>
     <td>Pass errors up to the outer JavaScript (to alert the user)</td>
     <td>string</td>
   </tr>
   <tr>
-    <td>`recv-message`</td>
+    <td><pre>recv-message</pre></td>
     <td>event</td>
     <td>Listen to the social provider for messages from other users and pass
         them on to the outer JavaScript</td>
@@ -118,7 +118,7 @@ information the freedom.js module is sending to the outer page.
         string for the message itself</td>
   </tr>
   <tr>
-    <td>`recv-buddylist`</td>
+    <td><pre>recv-buddylist</pre></td>
     <td>event</td>
     <td>Listen to the social provider for messages about what buddies are
         online and pass it on to the outer JavaScript</td>
@@ -126,7 +126,7 @@ information the freedom.js module is sending to the outer page.
         public key, etc.)</td>
   </tr>
   <tr>
-    <td>`export-publicKey`</td>
+    <td><pre>export-publicKey</pre></td>
     <td>event</td>
     <td>Once PGP provider is set up, send local user public key to outer
         JavaScript</td>
