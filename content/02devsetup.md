@@ -16,7 +16,16 @@ easily get started by using [Yeoman](http://yeoman.io):
 
 Or if you prefer pulling in boilerplate with git:
 
-    TODO
+    git clone https://github.com/freedomjs/freedom-starter.git
+    mv freedom-starter my-freedom-app  # optional, rename as you wish
+    cd my-freedom-app
+
+If you selected `webapp template` as the source for `freedom.js` in Yeoman
+or if you used the `git clone` approach, then you can start the demo app with
+`./runserver` (you may need to `chmod +x runserver.sh` first to make it
+executable). If you used Yeoman and selected `npm` as the source for
+`freedom.js`, then the command `grunt demo` will start the demo app. In either
+case, fire up a browser and head to http://localhost:8000/build/ to see it.
 
 If you're set, skip ahead to
 [how freedom.js works](../03howfreedomworks). Need a bit more
