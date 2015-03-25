@@ -42,9 +42,9 @@ Web workers are a standard intended to enable the concurrent execution of
 multiple JavaScript threads - a prototypical use would be to [calculate
 something computationally expensive (e.g. large prime numbers)]
 (http://dev.w3.org/html5/workers/#a-background-number-crunching-worker)
-while not interfering with the user interface. freedom.js takes advantage of
-these workers as module containers, which combined with an enforced API leads
-to a clearer picture of the behavior of the overall application.
+while not interfering with the user interface. freedom.js uses these workers as
+module containers, which combined with an enforced API leads to a clearer
+picture of the behavior of the overall application.
 
 The demo application you have from your setup is "Counter", a simple example of
 how freedom modules run and pass messages. You should definitely be able to run
