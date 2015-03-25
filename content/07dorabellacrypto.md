@@ -49,7 +49,7 @@ better than "no" security.
 In other words:
 
 - *Do use crypto with freedom.js if* -  you want a bit more privacy
-  and control over your data then you get with most existing web
+  and control over your data than you get with most existing web
   applications.
 - *Don't use crypto with freedom.js if* - you're planning a coup,
   trying to hide from a modern nation-state, or want to stop the Men

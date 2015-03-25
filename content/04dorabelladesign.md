@@ -9,10 +9,12 @@ To make any application it is wise to first consider how its overall
 functionality is best broken up into separate logical components. A chat
 application must perform at minimum:
 
-- Maintenance and reporting of client status (i.e. if you are online)
-- Reporting of peer status (i.e. if your friends are online)
+- Maintenance and reporting of client status (i.e. if you are online, your
+username)
+- Reporting of peer status (i.e. if your friends are online, their usernames)
 - Sending/receiving messages with peers
-- Displaying messages sent/received, client/peer online status, etc.
+- Displaying messages sent/received, client/peer online status/names, etc. (aka
+"user interface")
 
 On top of that, we want our particular chat application to sign and encrypt
 outgoing messages and verify and decrypt incoming ones. And since we're using
@@ -24,9 +26,9 @@ and so the natural way for most users to know if their friends are online and
 exchange messages with them is through proprietary services. This will not be
 changed in one fell swoop, and so instead our goal will be to write an
 application that can at least be used with *any* social network service, so
-users can at least switch more freely. And the encryption will also occur
+users can choose between them more freely. And the encryption will also occur
 entirely on the client side, reducing the social network to a relatively
-uninformed message passing channel.
+uninformed and untrusted message passing channel.
 
 As we learned in [the previous section](../03howfreedomworks), freedom.js works
 by executing concurrent JavaScript threads in web workers that communicate via
