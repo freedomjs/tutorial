@@ -70,17 +70,77 @@ means deciding on an API for communicating with outer (DOM-interacting)
 JavaScript, and ensuring that this API facilitates all needed uses of the other
 (social and crypto) modules.
 
+The API is specified from the point of view of the outer JavaScript, listing
+both methods that it can invoke on the instantiated freedom.js module and
+events from the module that can be listened for. The values for methods are
+arguments that are passed in, while the values for events contain whatever
+information the freedom.js module is sending to the outer page.
+
 <table>
   <tr>
     <th>Name</th>
     <th>Type</th>
-    <th>Value</th>
     <th>Functionality</th>
+    <th>Value(s)</th>
   </tr>
   <tr>
-    <td>TODO</td>
-    <td>TODO</td>
-    <td>TODO</td>
-    <td>TODO</td>
+    <td>`send`</td>
+    <td>method</td>
+    <td>Use the social provider to send a message to a target buddy</td>
+    <td>one string corresponding to targetBuddy (who to send the message to)
+        and another string for the message itself</td>
+  </tr>
+  <tr>
+    <td>`recv-status`</td>
+    <td>event</td>
+    <td>*Local* user status - tell the outer JavaScript whether the social
+        provider is online or offline</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>`recv-uid`</td>
+    <td>event</td>
+    <td>Once online, tell the outer JavaScript the local user name/ID</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>`recv-err`</td>
+    <td>event</td>
+    <td>Pass errors up to the outer JavaScript (to alert the user)</td>
+    <td>string</td>
+  </tr>
+  <tr>
+    <td>`recv-message`</td>
+    <td>event</td>
+    <td>Listen to the social provider for messages from other users and pass
+        them on to the outer JavaScript</td>
+    <td>one string corresponding to the buddy that sent the message and another
+        string for the message itself</td>
+  </tr>
+  <tr>
+    <td>`recv-buddylist`</td>
+    <td>event</td>
+    <td>Listen to the social provider for messages about what buddies are
+        online and pass it on to the outer JavaScript</td>
+    <td>Array of objects (themselves several strings to describe buddy ID,
+        public key, etc.)</td>
+  </tr>
+  <tr>
+    <td>`export-publicKey`</td>
+    <td>event</td>
+    <td>Once PGP provider is set up, send local user public key to outer
+        JavaScript</td>
+    <td>string</td>
   </tr>
 </table>
+
+Don't worry too much if this seems overwhelming right now - writing a good API
+is difficult, and in real development you will likely iterate several times
+before settling on something like the above. You will find yourself referring
+back to the API throughout development, so it's worth making it clear and
+literate - not too short and not too long.
+
+TODO link to json manifest version of API
+
+Now that we have the API under our belt, let's push on to implementation,
+starting with the core Dorabella freedom.js module.

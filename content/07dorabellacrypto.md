@@ -4,9 +4,9 @@ menu = "main"
 title = "07 - Using crypto in freedom.js"
 +++
 
-In this section you'll learn how to use the PGP api along with a
-trustworthy cryptography provider to employ signing/encryption and
-verifying/decryption in a freedom.js application.
+In this section we will use the PGP api along with a trustworthy cryptography
+provider to employ signing/encryption and verifying/decryption in a freedom.js
+application.
 
 *An aside* - you may be thinking "isn't
  [JavaScript cryptography considered harmful](http://matasano.com/articles/javascript-cryptography/)?"
