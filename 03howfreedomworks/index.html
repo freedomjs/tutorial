@@ -92,23 +92,85 @@
 <p>Regardless of how you chose to <a href="../02devsetup">do your dev setup</a>,
 you should now have a file hierarchy that looks something like this:</p>
 
-<pre><code>src/index.html
-src/main.js
-src/manifest.json
+<pre><code>src/freedom-module.js
+src/freedom-module.json
+src/index.html
+src/page.js
+src/static/freedomjs-icon.png
 src/static/style.css
 </code></pre>
 
 <p>These files are your freedom.js module - they specify layout/browser
-logic (<code>index.html</code>), freedom.js application logic (<code>main.js</code>),
-freedom.js API and dependencies/permissions (<code>manifest.json</code>), and
-styling or other static resources such as graphics (<code>static/</code>). In the
-above list they all live off of <code>src/</code> to reflect that they are the
-source code view of your application - they may later be linted,
-minified, and copied to e.g. <code>build/</code> (to eventually be deployed).</p>
+logic (<code>index.html</code> and <code>page.js</code>), freedom.js application logic
+(<code>freedom-module.js</code>), freedom.js API and dependencies/permissions
+(<code>freedom-module.json</code>), and styling or other static resources such as graphics
+(<code>static/</code>). In the above list they all live off of <code>src/</code> to reflect that they
+are the source code view of your application - they will later be copied to
+<code>build/</code> (and possibly linted and minified in the process).</p>
 
-<p>TODO more explanation for how above files interact.</p>
+<p><code>index.html</code> and <code>page.js</code> work much like simple static web pages you may be
+familiar with - the browser renders the page according to the HTML and runs
+JavaScript logic directly in the browser (i.e. it can interact with the DOM -
+the page itself). You can think of this as the &ldquo;front end&rdquo; of your application,
+though it is important to understand that the &ldquo;back end&rdquo; (the freedom module)
+also runs on the client. The main difference is that the freedom module runs in
+a web worker that cannot interact directly with the DOM, and instead uses
+message passing defined by its API to interact with and update the webpage.</p>
 
-<p>Depending on your choice of tooling, you may also have files like:</p>
+<p>Web workers are a standard intended to enable the concurrent execution of
+multiple JavaScript threads - a prototypical use would be to <a href="http://dev.w3.org/html5/workers/#a-background-number-crunching-worker">calculate
+something computationally expensive (e.g. large prime numbers)</a>
+while not interfering with the user interface. freedom.js uses these workers as
+module containers, which combined with an enforced API leads to a clearer
+picture of the behavior of the overall application.</p>
+
+<p>The demo application you have from your setup is &ldquo;Counter&rdquo;, a simple example of
+how freedom modules run and pass messages. You should definitely be able to run
+the demo locally (either with the <code>runserver.sh</code> script or with <code>grunt demo</code> if
+you chose to use npm), but you can also
+<a href="http://www.freedomjs.org/dist/freedom/latest/demo/counter/">view Counter at freedomjs.org</a>
+for convenience.</p>
+
+<p>The functionality of the application is simple - click the button to increment
+the displayed count. The key insight is that the displayed count is part of the
+webpage and is updated through the DOM, but the incrementing itself occurs in
+the freedom.js module. Following is the program flow - see if you can find the
+lines of code corresponding to each step (answers are linked but see if you can
+first find the spots without peeking).</p>
+
+<ol>
+<li>The browser loads the page and freedom.js is loaded with a given manifest
+(<em><a href="https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L18-24">answer</a></em>)</li>
+<li>freedom.js running in the browser creates the initial freedom module object
+(<em><a href="https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L9">answer</a></em>)</li>
+<li>The freedom module itself is instantiated from the given starting value
+(<em><a href="https://github.com/freedomjs/freedom-starter/blob/master/src/freedom-module.js#L9-12">answer</a></em>)</li>
+<li>The browser listens for clicks on the incrementing button
+(<em><a href="https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L11">answer</a></em>)</li>
+<li>The browser sends a message to the freedom module on receiving incrementing clicks
+(<em><a href="https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L12">answer</a></em>)</li>
+<li>The freedom module receives the message and returns the incremented value
+(<em><a href="https://github.com/freedomjs/freedom-starter/blob/master/src/freedom-module.js#L14-18">answer</a></em>)</li>
+<li>The browser receives the value back and updates the page
+(<em><a href="https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L13">answer</a></em>)</li>
+</ol>
+
+<p>The above flow may seem painstakingly detailed for such a simple example, but
+it is wise to make sure you understand every step as they will be larger and
+more obfuscated in more complex applications. Overall, while all the code is
+running in the browser, you need to be able to envision the divide between the
+code that interacts with the DOM (in this case <code>page.js</code>) and the code that
+runs in a web worker (in this case <code>freedom-module.js</code>). The former is
+responsible for both updating the visible page and handling user interaction
+with it, while the latter is responsible for running whatever freedom.js
+application logic you create, storing state, and communicating that state wtih
+the code running directly in the browser. In this specific case, <code>page.js</code>
+knows about the button clicks and is responsible for updating the displayed
+count, while <code>freedom-module.js</code> knows the actual count value and increments
+and returns it when requested.</p>
+
+<p>The above addresses the starter code that is directly part of a freedom.js
+module. Depending on your choice of tooling, you may also have files like:</p>
 
 <pre><code>Gruntfile.js
 node_modules/...
