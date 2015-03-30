@@ -61,19 +61,19 @@ lines of code corresponding to each step (answers are linked but see if you can
 first find the spots without peeking).
 
 1. The browser loads the page and freedom.js is loaded with a given manifest
-(*[answer](https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L18-24)*)
+(*[answer](https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L21-27)*)
 2. freedom.js running in the browser creates the initial freedom module object
-(*[answer](https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L9)*)
+(*[answer](https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L12)*)
 3. The freedom module itself is instantiated from the given starting value
 (*[answer](https://github.com/freedomjs/freedom-starter/blob/master/src/freedom-module.js#L9-12)*)
 4. The browser listens for clicks on the incrementing button
-(*[answer](https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L11)*)
+(*[answer](https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L14)*)
 5. The browser sends a message to the freedom module on receiving incrementing clicks
-(*[answer](https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L12)*)
+(*[answer](https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L15)*)
 6. The freedom module receives the message and returns the incremented value
 (*[answer](https://github.com/freedomjs/freedom-starter/blob/master/src/freedom-module.js#L14-18)*)
 7. The browser receives the value back and updates the page
-(*[answer](https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L13)*)
+(*[answer](https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L16)*)
 
 The above flow may seem painstakingly detailed for such a simple example, but
 it is wise to make sure you understand every step as they will be larger and
