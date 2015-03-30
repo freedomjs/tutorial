@@ -137,8 +137,17 @@ yo freedom
 
 &lt;p&gt;Or if you prefer pulling in boilerplate with git:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;TODO
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/freedomjs/freedom-starter.git
+mv freedom-starter my-freedom-app  # optional, rename as you wish
+cd my-freedom-app
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you selected &lt;code&gt;webapp template&lt;/code&gt; as the source for &lt;code&gt;freedom.js&lt;/code&gt; in Yeoman
+or if you used the &lt;code&gt;git clone&lt;/code&gt; approach, then you can start the demo app with
+&lt;code&gt;./runserver&lt;/code&gt; (you may need to &lt;code&gt;chmod +x runserver.sh&lt;/code&gt; first to make it
+executable). If you used Yeoman and selected &lt;code&gt;npm&lt;/code&gt; as the source for
+&lt;code&gt;freedom.js&lt;/code&gt;, then the command &lt;code&gt;grunt demo&lt;/code&gt; will start the demo app. In either
+case, fire up a browser and head to &lt;a href=&#34;http://localhost:8000/build/&#34;&gt;http://localhost:8000/build/&lt;/a&gt; to see it.&lt;/p&gt;
 
 &lt;p&gt;If you&amp;rsquo;re set, skip ahead to
 &lt;a href=&#34;../03howfreedomworks&#34;&gt;how freedom.js works&lt;/a&gt;. Need a bit more
@@ -211,23 +220,85 @@ about freedom.js itself!&lt;/p&gt;
 &lt;p&gt;Regardless of how you chose to &lt;a href=&#34;../02devsetup&#34;&gt;do your dev setup&lt;/a&gt;,
 you should now have a file hierarchy that looks something like this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;src/index.html
-src/main.js
-src/manifest.json
+&lt;pre&gt;&lt;code&gt;src/freedom-module.js
+src/freedom-module.json
+src/index.html
+src/page.js
+src/static/freedomjs-icon.png
 src/static/style.css
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;These files are your freedom.js module - they specify layout/browser
-logic (&lt;code&gt;index.html&lt;/code&gt;), freedom.js application logic (&lt;code&gt;main.js&lt;/code&gt;),
-freedom.js API and dependencies/permissions (&lt;code&gt;manifest.json&lt;/code&gt;), and
-styling or other static resources such as graphics (&lt;code&gt;static/&lt;/code&gt;). In the
-above list they all live off of &lt;code&gt;src/&lt;/code&gt; to reflect that they are the
-source code view of your application - they may later be linted,
-minified, and copied to e.g. &lt;code&gt;build/&lt;/code&gt; (to eventually be deployed).&lt;/p&gt;
+logic (&lt;code&gt;index.html&lt;/code&gt; and &lt;code&gt;page.js&lt;/code&gt;), freedom.js application logic
+(&lt;code&gt;freedom-module.js&lt;/code&gt;), freedom.js API and dependencies/permissions
+(&lt;code&gt;freedom-module.json&lt;/code&gt;), and styling or other static resources such as graphics
+(&lt;code&gt;static/&lt;/code&gt;). In the above list they all live off of &lt;code&gt;src/&lt;/code&gt; to reflect that they
+are the source code view of your application - they will later be copied to
+&lt;code&gt;build/&lt;/code&gt; (and possibly linted and minified in the process).&lt;/p&gt;
 
-&lt;p&gt;TODO more explanation for how above files interact.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;index.html&lt;/code&gt; and &lt;code&gt;page.js&lt;/code&gt; work much like simple static web pages you may be
+familiar with - the browser renders the page according to the HTML and runs
+JavaScript logic directly in the browser (i.e. it can interact with the DOM -
+the page itself). You can think of this as the &amp;ldquo;front end&amp;rdquo; of your application,
+though it is important to understand that the &amp;ldquo;back end&amp;rdquo; (the freedom module)
+also runs on the client. The main difference is that the freedom module runs in
+a web worker that cannot interact directly with the DOM, and instead uses
+message passing defined by its API to interact with and update the webpage.&lt;/p&gt;
 
-&lt;p&gt;Depending on your choice of tooling, you may also have files like:&lt;/p&gt;
+&lt;p&gt;Web workers are a standard intended to enable the concurrent execution of
+multiple JavaScript threads - a prototypical use would be to &lt;a href=&#34;http://dev.w3.org/html5/workers/#a-background-number-crunching-worker&#34;&gt;calculate
+something computationally expensive (e.g. large prime numbers)&lt;/a&gt;
+while not interfering with the user interface. freedom.js uses these workers as
+module containers, which combined with an enforced API leads to a clearer
+picture of the behavior of the overall application.&lt;/p&gt;
+
+&lt;p&gt;The demo application you have from your setup is &amp;ldquo;Counter&amp;rdquo;, a simple example of
+how freedom modules run and pass messages. You should definitely be able to run
+the demo locally (either with the &lt;code&gt;runserver.sh&lt;/code&gt; script or with &lt;code&gt;grunt demo&lt;/code&gt; if
+you chose to use npm), but you can also
+&lt;a href=&#34;http://www.freedomjs.org/dist/freedom/latest/demo/counter/&#34;&gt;view Counter at freedomjs.org&lt;/a&gt;
+for convenience.&lt;/p&gt;
+
+&lt;p&gt;The functionality of the application is simple - click the button to increment
+the displayed count. The key insight is that the displayed count is part of the
+webpage and is updated through the DOM, but the incrementing itself occurs in
+the freedom.js module. Following is the program flow - see if you can find the
+lines of code corresponding to each step (answers are linked but see if you can
+first find the spots without peeking).&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The browser loads the page and freedom.js is loaded with a given manifest
+(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L18-24&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;freedom.js running in the browser creates the initial freedom module object
+(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L9&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;The freedom module itself is instantiated from the given starting value
+(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/freedom-module.js#L9-12&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;The browser listens for clicks on the incrementing button
+(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L11&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;The browser sends a message to the freedom module on receiving incrementing clicks
+(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L12&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;The freedom module receives the message and returns the incremented value
+(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/freedom-module.js#L14-18&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;The browser receives the value back and updates the page
+(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L13&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The above flow may seem painstakingly detailed for such a simple example, but
+it is wise to make sure you understand every step as they will be larger and
+more obfuscated in more complex applications. Overall, while all the code is
+running in the browser, you need to be able to envision the divide between the
+code that interacts with the DOM (in this case &lt;code&gt;page.js&lt;/code&gt;) and the code that
+runs in a web worker (in this case &lt;code&gt;freedom-module.js&lt;/code&gt;). The former is
+responsible for both updating the visible page and handling user interaction
+with it, while the latter is responsible for running whatever freedom.js
+application logic you create, storing state, and communicating that state wtih
+the code running directly in the browser. In this specific case, &lt;code&gt;page.js&lt;/code&gt;
+knows about the button clicks and is responsible for updating the displayed
+count, while &lt;code&gt;freedom-module.js&lt;/code&gt; knows the actual count value and increments
+and returns it when requested.&lt;/p&gt;
+
+&lt;p&gt;The above addresses the starter code that is directly part of a freedom.js
+module. Depending on your choice of tooling, you may also have files like:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;Gruntfile.js
 node_modules/...
@@ -276,7 +347,158 @@ as how most users keep track of and communicate with their friends.&lt;/p&gt;
       <pubDate>Thu, 26 Feb 2015 13:26:05 -0800</pubDate>
       
       <guid>http://www.freedomjs.org/tutorial/04dorabelladesign/</guid>
-      <description></description>
+      <description>
+
+&lt;h1 id=&#34;general-architecture:e751e72e7b04edac309ca1f81c943e67&#34;&gt;General architecture&lt;/h1&gt;
+
+&lt;p&gt;To make any application it is wise to first consider how its overall
+functionality is best broken up into separate logical components. A chat
+application must perform at minimum:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Maintenance and reporting of client status (i.e. if you are online, your
+username)&lt;/li&gt;
+&lt;li&gt;Reporting of peer status (i.e. if your friends are online, their usernames)&lt;/li&gt;
+&lt;li&gt;Sending/receiving messages with peers&lt;/li&gt;
+&lt;li&gt;Displaying messages sent/received, client/peer online status/names, etc. (aka
+&amp;ldquo;user interface&amp;rdquo;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On top of that, we want our particular chat application to sign and encrypt
+outgoing messages and verify and decrypt incoming ones. And since we&amp;rsquo;re using
+freedom.js, we want to do all of this in as decentralized a manner as possible,
+while still building a pragmatic and usable application.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately the Internet has not settled on a decentralized social network,
+and so the natural way for most users to know if their friends are online and
+exchange messages with them is through proprietary services. This will not be
+changed in one fell swoop, and so instead our goal will be to write an
+application that can at least be used with &lt;em&gt;any&lt;/em&gt; social network service, so
+users can choose between them more freely. And the encryption will also occur
+entirely on the client side, reducing the social network to a relatively
+uninformed and untrusted message passing channel.&lt;/p&gt;
+
+&lt;p&gt;As we learned in &lt;a href=&#34;../03howfreedomworks&#34;&gt;the previous section&lt;/a&gt;, freedom.js works
+by executing concurrent JavaScript threads in web workers that communicate via
+message passing. Each web worker is a freedom.js module that should have a
+distinct purpose, and there is also typically at least some JavaScript executed
+directly in the browser (so it can interact with the user and the DOM). Let us
+consider separating our chat application into three modules (not counting the
+direct-in-browser code):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A module to handle interaction with the social network service&lt;/li&gt;
+&lt;li&gt;A module to handle encryption/decryption&lt;/li&gt;
+&lt;li&gt;A module to handle local client usage and state (essentially to connect the
+JavaScript running directly in the browser with the other two modules)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Of these three, we only need to actually write the last one - freedom.js
+provides a
+&lt;a href=&#34;https://github.com/freedomjs/freedom/blob/master/interface/social.json&#34;&gt;social API&lt;/a&gt;
+as well as some standard providers for us to get started, and we will be using
+&lt;a href=&#34;https://github.com/freedomjs/freedom-pgp-e2e&#34;&gt;freedom-pgp-e2e&lt;/a&gt; to provide
+a PGP-like interface for encryption.&lt;/p&gt;
+
+&lt;p&gt;So our overall plan for the structure of Dorabella (from &amp;ldquo;front&amp;rdquo; to &amp;ldquo;back&amp;rdquo;) is:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;User interface&lt;/strong&gt; - HTML, static resources (CSS, images)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ldquo;Outer&amp;rdquo; JavaScript&lt;/strong&gt; - runs directly in browser and not a web worker,
+responsible for starting freedom.js, interacting with the main module, and
+updating the DOM with new information (as well as general UI/UX niceties)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Main freedom.js module&lt;/strong&gt; - core of Dorabella, receives messages from
+&amp;ldquo;outer&amp;rdquo; JavaScript, uses social and crypto modules, and returns results&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Social API&lt;/strong&gt; - built-in freedom.js interface for finding and communicating
+with friends via a variety of social media services&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PGP API&lt;/strong&gt; - freedom.js module that provides PGP-style crypto functionality&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;TODO diagram?&lt;/p&gt;
+
+&lt;h1 id=&#34;component-details-and-api:e751e72e7b04edac309ca1f81c943e67&#34;&gt;Component details and API&lt;/h1&gt;
+
+&lt;p&gt;Now that we have a general idea of the code we want to write, we should plan in
+more detail the structure of the main module we&amp;rsquo;ll write. In particular this
+means deciding on an API for communicating with outer (DOM-interacting)
+JavaScript, and ensuring that this API facilitates all needed uses of the other
+(social and crypto) modules.&lt;/p&gt;
+
+&lt;p&gt;The API is specified from the point of view of the outer JavaScript, listing
+both methods that it can invoke on the instantiated freedom.js module and
+events from the module that can be listened for. The values for methods are
+arguments that are passed in, while the values for events contain whatever
+information the freedom.js module is sending to the outer page.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Type&lt;/th&gt;
+    &lt;th&gt;Functionality&lt;/th&gt;
+    &lt;th&gt;Value(s)&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;pre&gt;send&lt;/pre&gt;&lt;/td&gt;
+    &lt;td&gt;method&lt;/td&gt;
+    &lt;td&gt;Use the social provider to send a message to a target buddy&lt;/td&gt;
+    &lt;td&gt;one string corresponding to targetBuddy (who to send the message to)
+        and another string for the message itself&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;pre&gt;recv-status&lt;/pre&gt;&lt;/td&gt;
+    &lt;td&gt;event&lt;/td&gt;
+    &lt;td&gt;*Local* user status - tell the outer JavaScript whether the social
+        provider is online or offline&lt;/td&gt;
+    &lt;td&gt;string&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;pre&gt;recv-uid&lt;/pre&gt;&lt;/td&gt;
+    &lt;td&gt;event&lt;/td&gt;
+    &lt;td&gt;Once online, tell the outer JavaScript the local user name/ID&lt;/td&gt;
+    &lt;td&gt;string&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;pre&gt;recv-err&lt;/pre&gt;&lt;/td&gt;
+    &lt;td&gt;event&lt;/td&gt;
+    &lt;td&gt;Pass errors up to the outer JavaScript (to alert the user)&lt;/td&gt;
+    &lt;td&gt;string&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;pre&gt;recv-message&lt;/pre&gt;&lt;/td&gt;
+    &lt;td&gt;event&lt;/td&gt;
+    &lt;td&gt;Listen to the social provider for messages from other users and pass
+        them on to the outer JavaScript&lt;/td&gt;
+    &lt;td&gt;one string corresponding to the buddy that sent the message and another
+        string for the message itself&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;pre&gt;recv-buddylist&lt;/pre&gt;&lt;/td&gt;
+    &lt;td&gt;event&lt;/td&gt;
+    &lt;td&gt;Listen to the social provider for messages about what buddies are
+        online and pass it on to the outer JavaScript&lt;/td&gt;
+    &lt;td&gt;Array of objects (themselves several strings to describe buddy ID,
+        public key, etc.)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;pre&gt;export-publicKey&lt;/pre&gt;&lt;/td&gt;
+    &lt;td&gt;event&lt;/td&gt;
+    &lt;td&gt;Once PGP provider is set up, send local user public key to outer
+        JavaScript&lt;/td&gt;
+    &lt;td&gt;string&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Don&amp;rsquo;t worry too much if this seems overwhelming right now - writing a good API
+is difficult, and in real development you will likely iterate several times
+before settling on something like the above. You will find yourself referring
+back to the API throughout development, so it&amp;rsquo;s worth making it clear and
+literate - not too short and not too long.&lt;/p&gt;
+
+&lt;p&gt;TODO link to json manifest version of API&lt;/p&gt;
+
+&lt;p&gt;Now that we have the API under our belt, let&amp;rsquo;s push on to implementation,
+starting with the core Dorabella freedom.js module.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -285,7 +507,31 @@ as how most users keep track of and communicate with their friends.&lt;/p&gt;
       <pubDate>Thu, 26 Feb 2015 13:25:07 -0800</pubDate>
       
       <guid>http://www.freedomjs.org/tutorial/05dorabellacore/</guid>
-      <description></description>
+      <description>
+
+&lt;p&gt;In this section we will flesh out the core of the main freedom.js module for
+Dorabella, providing the API functionality needed for the overall application.
+We will leave the specifics of interacting with the modules we depend on for
+later sections, and focus on giving an overall picture of how the module works.&lt;/p&gt;
+
+&lt;h1 id=&#34;starting-the-module:14d62cfdcb3e6e2c0fd2aa2c09133779&#34;&gt;Starting the module&lt;/h1&gt;
+
+&lt;p&gt;TODO&lt;/p&gt;
+
+&lt;h1 id=&#34;implementing-the-api:14d62cfdcb3e6e2c0fd2aa2c09133779&#34;&gt;Implementing the API&lt;/h1&gt;
+
+&lt;p&gt;TODO&lt;/p&gt;
+
+&lt;h1 id=&#34;making-the-implementation-usable:14d62cfdcb3e6e2c0fd2aa2c09133779&#34;&gt;Making the implementation usable&lt;/h1&gt;
+
+&lt;p&gt;To invoke methods in the module, they must be made visible to freedom.js. This
+is similar to how node.js modules export their functionality, but in freedom.js
+we will invoke a method such as &lt;code&gt;providePromises&lt;/code&gt;. This will tell freedom.js
+that the object we constructed above satisfies the API specified in the
+manifest (&lt;code&gt;freedom-module.json&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;TODO&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -294,7 +540,31 @@ as how most users keep track of and communicate with their friends.&lt;/p&gt;
       <pubDate>Thu, 26 Feb 2015 13:24:09 -0800</pubDate>
       
       <guid>http://www.freedomjs.org/tutorial/06dorabellachat/</guid>
-      <description></description>
+      <description>
+
+&lt;p&gt;In this section we will add an actual social API provider so we can finish the
+implementation of several of the main module methods. At the end we will have a
+functional chat application, though not yet with encryption.&lt;/p&gt;
+
+&lt;h1 id=&#34;depending-on-other-freedom-js-modules:ca069b1b62aa2f17687129c55996856a&#34;&gt;Depending on other freedom.js modules&lt;/h1&gt;
+
+&lt;p&gt;Our application is growing larger - we now need to think not just about the
+&amp;ldquo;outer&amp;rdquo; page communicating with the main freedom.js module, but also the main
+freedom.js module loading and communicating with other freedom.js modules. At
+first this may seem like a lot of work, but there are significant advantages to
+a modular approach. Over time we hope to see an ecosystem of freedom.js modules
+that enable developers to get a quick start in developing a variety of
+decentralized applications.&lt;/p&gt;
+
+&lt;p&gt;TODO&lt;/p&gt;
+
+&lt;h1 id=&#34;back-to-the-ui:ca069b1b62aa2f17687129c55996856a&#34;&gt;Back to the UI&lt;/h1&gt;
+
+&lt;p&gt;Now that we have a fully functional chat application, we should revisit the UI
+and make sure it provides all the necessary information and interaction.&lt;/p&gt;
+
+&lt;p&gt;TODO (put adding tabs here)&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -303,7 +573,69 @@ as how most users keep track of and communicate with their friends.&lt;/p&gt;
       <pubDate>Thu, 26 Feb 2015 13:23:10 -0800</pubDate>
       
       <guid>http://www.freedomjs.org/tutorial/07dorabellacrypto/</guid>
-      <description></description>
+      <description>
+
+&lt;p&gt;In this section we will use the PGP api along with a trustworthy cryptography
+provider to employ signing/encryption and verifying/decryption in a freedom.js
+application.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;An aside&lt;/em&gt; - you may be thinking &amp;ldquo;isn&amp;rsquo;t
+ &lt;a href=&#34;http://matasano.com/articles/javascript-cryptography/&#34;&gt;JavaScript cryptography considered harmful&lt;/a&gt;?&amp;rdquo;
+ For some applications and threat models it surely is, but we believe
+ our purpose and usage of it here is appropriate for a few key
+ reasons:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Our modules run in web workers&lt;/strong&gt; - this means they can only
+communicate with the DOM via message passing, and reduces the
+&amp;ldquo;malleable runtime&amp;rdquo; problem.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;We&amp;rsquo;re using modern audited crypto code&lt;/strong&gt; - specifically the
+provider we&amp;rsquo;ll be using depends on Google&amp;rsquo;s
+&lt;a href=&#34;https://github.com/google/end-to-end&#34;&gt;End-to-End&lt;/a&gt;, which implements
+Elliptic Curve Cryptography and is also
+&lt;a href=&#34;http://yahoo.tumblr.com/post/113708033335/user-focused-security-end-to-end-encryption&#34;&gt;being used by Yahoo Mail&lt;/a&gt;. The
+PGP api also can be used with other providers, if you prefer.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;We generate the keypair locally and don&amp;rsquo;t let you export the
+private key&lt;/strong&gt; - we
+&lt;a href=&#34;https://github.com/freedomjs/freedom-pgp-e2e/issues/25&#34;&gt;generate keys with secure parameters&lt;/a&gt;
+and want to ensure those keys stay safe.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Of course, the important remaining issue is that, if you use a
+freedom.js application by simply visiting a webpage, you are still
+trusting that server (and your connection to it) to deliver the true
+application on every page load. This can be mitigated by packaging the
+application (e.g. as a browser extension or mobile application),
+requiring the user to instead trust their application delivery
+platform (which pulls new application versions less frequently and is
+more likely to have cryptographic signatures and a review process).&lt;/p&gt;
+
+&lt;p&gt;Our goal is to provide developers a tool that will allow them to write
+applications that are at least &lt;em&gt;more&lt;/em&gt; private and &lt;em&gt;more&lt;/em&gt; secure than
+many existing models. However, if your adversary is a global passive
+attacker or similar powerful entity, then you would be well-advised to
+treat any and all online tools and services with skepticism and do
+what you can to take your security into your own hands. It is up to
+you and your threat model to decide whether or not &amp;ldquo;some&amp;rdquo; security is
+better than &amp;ldquo;no&amp;rdquo; security.&lt;/p&gt;
+
+&lt;p&gt;In other words:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Do use crypto with freedom.js if&lt;/em&gt; -  you want a bit more privacy
+and control over your data than you get with most existing web
+applications.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Don&amp;rsquo;t use crypto with freedom.js if&lt;/em&gt; - you&amp;rsquo;re planning a coup,
+trying to hide from a modern nation-state, or want to stop the Men
+in Black from reading your thoughts.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;getting-and-loading-the-freedom-pgp-e2e-module:7108d1b3d7ac5e58ba47367acc1ab71f&#34;&gt;Getting and loading the freedom-pgp-e2e module&lt;/h1&gt;
+
+&lt;h1 id=&#34;setting-up-the-crypto-client-and-handling-keys:7108d1b3d7ac5e58ba47367acc1ab71f&#34;&gt;Setting up the crypto client and handling keys&lt;/h1&gt;
+
+&lt;h1 id=&#34;using-the-crypto-api-to-exchange-secure-messages:7108d1b3d7ac5e58ba47367acc1ab71f&#34;&gt;Using the crypto API to exchange secure messages&lt;/h1&gt;
+</description>
     </item>
     
     <item>
