@@ -268,19 +268,19 @@ first find the spots without peeking).&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;The browser loads the page and freedom.js is loaded with a given manifest
-(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L18-24&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
+(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L21-27&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
 &lt;li&gt;freedom.js running in the browser creates the initial freedom module object
-(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L9&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
+(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L12&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
 &lt;li&gt;The freedom module itself is instantiated from the given starting value
 (&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/freedom-module.js#L9-12&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
 &lt;li&gt;The browser listens for clicks on the incrementing button
-(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L11&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
+(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L14&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
 &lt;li&gt;The browser sends a message to the freedom module on receiving incrementing clicks
-(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L12&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
+(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L15&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
 &lt;li&gt;The freedom module receives the message and returns the incremented value
 (&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/freedom-module.js#L14-18&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
 &lt;li&gt;The browser receives the value back and updates the page
-(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L13&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
+(&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L16&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;The above flow may seem painstakingly detailed for such a simple example, but
