@@ -7,7 +7,7 @@ title = "freedom.js tutorial"
   defaultKeywords = "javascript,freedom.js,decentralized,tutorial"
   theme = "theme-base-08"
   github = "https://github.com/freedomjs"
-  #googleAnalytics = "Your Google Analytics tracking code"
+  googleAnalytics = "UA-44818243-1"
   frontheader = "A tutorial for freedom.js, a framework for peer-to-peer web apps"
   frontpitch = """
   WORK IN PROGRESS
