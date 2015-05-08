@@ -17,9 +17,9 @@
       <guid>http://www.freedomjs.org/tutorial/01introduction/</guid>
       <description>
 
-&lt;h1 id=&#34;what-is-freedom-js-and-why-should-i-care:c671dff226dbd268b9535b226b05b473&#34;&gt;What is freedom.js, and why should I care?&lt;/h1&gt;
+&lt;h1 id=&#34;what-is-freedom-js-and-why-should-i-care:c671dff226dbd268b9535b226b05b473&#34;&gt;What is &lt;em&gt;freedom.js&lt;/em&gt;, and why should I care?&lt;/h1&gt;
 
-&lt;p&gt;freedom.js is a JavaScript framework that facilitates developing
+&lt;p&gt;&lt;em&gt;freedom.js&lt;/em&gt; is a JavaScript framework that facilitates developing
 &lt;a href=&#34;https://en.wikipedia.org/wiki/Peer-to-peer&#34;&gt;peer-to-peer (P2P)&lt;/a&gt;
 applications. These sorts of applications have been around for awhile
 and can be pretty nifty - they give the developer a low-cost way to
@@ -29,41 +29,41 @@ sophisticated understanding of networking and security. Doing so in
 the browser - the increasingly important yet constantly changing
 application platform - is even harder.&lt;/p&gt;
 
-&lt;p&gt;This is where freedom.js comes in - we provide a framework where
+&lt;p&gt;This is where &lt;em&gt;freedom.js&lt;/em&gt; comes in - we provide a framework where
 common functionality (social, storage, network transport, etc.) has a
 standard interface and a suite of providers that run across typical
 JavaScript platforms (currently Chrome, Firefox, and Node.js). Want to
 write an app that lets people connect directly to each other in their
 browsers, choosing their friends from existing social networks?
-freedom.js takes care of the details, letting you focus on your
+&lt;em&gt;freedom.js&lt;/em&gt; takes care of the details, letting you focus on your
 application logic.&lt;/p&gt;
 
 &lt;p&gt;How does this work? You&amp;rsquo;ll learn more throughout the tutorial, but the
-core of it is that a freedom.js app specifies its API and dependencies
-via a manifest, and then freedom.js uses
+core of it is that a &lt;em&gt;freedom.js&lt;/em&gt; app specifies its API and dependencies
+via a manifest, and then &lt;em&gt;freedom.js&lt;/em&gt; uses
 &lt;a href=&#34;https://en.wikipedia.org/wiki/Web_worker&#34;&gt;web workers&lt;/a&gt; to run the
 application and related modules. These modules run independently and
 so must communicate (message passing via the specified API), but this
 isolation and abstraction allows for applications to run across
 computers and users - resulting in decentralized peer-to-peer applications.&lt;/p&gt;
 
-&lt;p&gt;freedom.js is open source
+&lt;p&gt;&lt;em&gt;freedom.js&lt;/em&gt; is open source
 (&lt;a href=&#34;http://opensource.org/licenses/Apache-2.0&#34;&gt;Apache License 2.0&lt;/a&gt;)
 and you can find our repositories on
 &lt;a href=&#34;https://github.com/freedomjs&#34;&gt;GitHub&lt;/a&gt;. We&amp;rsquo;re actively developing and
 enhancing the platform, and welcome community contributions. One of
-the best ways to get started is to just use freedom.js to develop an
+the best ways to get started is to just use &lt;em&gt;freedom.js&lt;/em&gt; to develop an
 application - so think some about what you want to make, and read on!&lt;/p&gt;
 
-&lt;h1 id=&#34;what-are-some-apps-that-have-been-built-using-freedom-js:c671dff226dbd268b9535b226b05b473&#34;&gt;What are some apps that have been built using freedom.js?&lt;/h1&gt;
+&lt;h1 id=&#34;what-are-some-apps-that-have-been-built-using-freedom-js:c671dff226dbd268b9535b226b05b473&#34;&gt;What are some apps that have been built using &lt;em&gt;freedom.js&lt;/em&gt;?&lt;/h1&gt;
 
-&lt;p&gt;To get an idea of the sorts of things you can do with freedom.js, here
+&lt;p&gt;To get an idea of the sorts of things you can do with &lt;em&gt;freedom.js&lt;/em&gt;, here
 are some existing applications:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Take Turns, Sally&lt;/strong&gt;
 (&lt;a href=&#34;https://github.com/ryscheng/taketurns&#34;&gt;repo&lt;/a&gt;,
-&lt;a href=&#34;http://taketurns.sally.wtf/&#34;&gt;app&lt;/a&gt;) - a freedom.js application that
+&lt;a href=&#34;http://taketurns.sally.wtf/&#34;&gt;app&lt;/a&gt;) - a &lt;em&gt;freedom.js&lt;/em&gt; application that
 exposes a simple queue. Everyone in the meeting pops open their
 laptop/smartphone and navigates to the URL. Agree on a &amp;ldquo;room name&amp;rdquo; and
 choose 1 leader in the group. Then queue up to talk!&lt;/li&gt;
@@ -77,10 +77,10 @@ may try to watch, block, or redirect users&amp;rsquo; Internet connections.&lt;/
 allowing users to generate and exchange keys to secure their further
 communication. This is the application that we will build together in
 this tutorial - you&amp;rsquo;ll learn about social and cryptography providers,
-as well as general freedom.js module design and structure.&lt;/li&gt;
+as well as general &lt;em&gt;freedom.js&lt;/em&gt; module design and structure.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;freedom.js also has
+&lt;p&gt;&lt;em&gt;freedom.js&lt;/em&gt; also has
 &lt;a href=&#34;http://www.freedomjs.org/dist/freedom/latest/demo/&#34;&gt;demo apps&lt;/a&gt; that
 can serve as useful examples while developing (including a chat demo
 that is the base of Dorabella).&lt;/p&gt;
@@ -94,23 +94,31 @@ JavaScript ecosystem then picking and choosing or skipping through may
 make sense. The topics of the remaining sections are:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;../02devsetup&#34;&gt;Dev Environment Setup&lt;/a&gt; - the basic commands you need to install
-freedom.js and related development tools&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../03howfreedomworks&#34;&gt;How freedom.js works&lt;/a&gt; - an explanation of the control and messaging
-flow of a freedom.js-powered application&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../04dorabelladesign&#34;&gt;Designing Dorabella&lt;/a&gt; - how to plan the structure and API of an app&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../05dorabellacore&#34;&gt;The core of Dorabella&lt;/a&gt; - once it&amp;rsquo;s planned, how to get started
-implementing the boilerplate and beyond&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../06dorabellachat&#34;&gt;Implementing chat&lt;/a&gt; - the main task of Dorabella, and a tour of the
-freedom.js social interface&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../07dorabellacrypto&#34;&gt;Using crypto in freedom.js&lt;/a&gt; - an important but sensitive part of
-development, also provided by freedom.js&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../08dorabellapolish&#34;&gt;Polishing Dorabella&lt;/a&gt; - testing, automation, and those other tweaks
-that make an app ready to go&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../09deploymentandbeyond&#34;&gt;Deployment and Beyond&lt;/a&gt; - now that the app is written, it&amp;rsquo;s time to
-get it out there&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;../10howtohelpfreedom&#34;&gt;How to help freedom.js&lt;/a&gt; - we&amp;rsquo;re an open source project and welcome
-contributions!&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../02devsetup&#34;&gt;Dev Environment Setup&lt;/a&gt; - the basic commands you need to
+install &lt;em&gt;freedom.js&lt;/em&gt; and related development tools&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../03howfreedomworks&#34;&gt;How &lt;em&gt;freedom.js&lt;/em&gt; works&lt;/a&gt; - an explanation of the control
+and messaging flow of a &lt;em&gt;freedom.js&lt;/em&gt;-powered application&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../04dorabelladesign&#34;&gt;Designing Dorabella&lt;/a&gt; - how to plan the structure and
+API of an app&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../05dorabellacore&#34;&gt;The core of Dorabella&lt;/a&gt; - once it&amp;rsquo;s planned, how to get
+started implementing the boilerplate and beyond&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../06dorabellachat&#34;&gt;Implementing chat&lt;/a&gt; - the main task of Dorabella, and a
+tour of the &lt;em&gt;freedom.js&lt;/em&gt; social interface
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../07dorabellacrypto&#34;&gt;Using crypto in &lt;em&gt;freedom.js&lt;/em&gt;&lt;/a&gt; - an important but
+sensitive part of development, also provided by &lt;em&gt;freedom.js&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../08dorabellapolish&#34;&gt;Polishing Dorabella&lt;/a&gt; - testing, automation, and those
+other tweaks that make an app ready to go&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;../09deploymentandbeyond&#34;&gt;Deployment and Beyond&lt;/a&gt; - now that the app is
+written, it&amp;rsquo;s time to get it out there
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;../10howtohelpfreedom&#34;&gt;How to help &lt;em&gt;freedom.js&lt;/em&gt;&lt;/a&gt; - we&amp;rsquo;re an open source&lt;code&gt;:w
+&lt;/code&gt;
+project and welcome contributions!&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -142,20 +150,20 @@ mv freedom-starter my-freedom-app  # optional, rename as you wish
 cd my-freedom-app
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;If you selected &lt;code&gt;webapp template&lt;/code&gt; as the source for &lt;code&gt;freedom.js&lt;/code&gt; in Yeoman
+&lt;p&gt;If you selected &lt;code&gt;webapp template&lt;/code&gt; as the source for &lt;em&gt;freedom.js&lt;/em&gt; in Yeoman
 or if you used the &lt;code&gt;git clone&lt;/code&gt; approach, then you can start the demo app with
 &lt;code&gt;./runserver&lt;/code&gt; (you may need to &lt;code&gt;chmod +x runserver.sh&lt;/code&gt; first to make it
 executable). If you used Yeoman and selected &lt;code&gt;npm&lt;/code&gt; as the source for
-&lt;code&gt;freedom.js&lt;/code&gt;, then the command &lt;code&gt;grunt demo&lt;/code&gt; will start the demo app. In either
+&lt;em&gt;freedom.js&lt;/em&gt;, then the command &lt;code&gt;grunt demo&lt;/code&gt; will start the demo app. In either
 case, fire up a browser and head to &lt;a href=&#34;http://localhost:8000/build/&#34;&gt;http://localhost:8000/build/&lt;/a&gt; to see it.&lt;/p&gt;
 
 &lt;p&gt;If you&amp;rsquo;re set, skip ahead to
-&lt;a href=&#34;../03howfreedomworks&#34;&gt;how freedom.js works&lt;/a&gt;. Need a bit more
+&lt;a href=&#34;../03howfreedomworks&#34;&gt;how &lt;em&gt;freedom.js&lt;/em&gt; works&lt;/a&gt;. Need a bit more
 explanation on the above? Read on!&lt;/p&gt;
 
 &lt;h1 id=&#34;details:649baccfa024a46ec6ccf587bf61cd3c&#34;&gt;Details&lt;/h1&gt;
 
-&lt;p&gt;Strictly speaking, all you need to develop with freedom.js is the
+&lt;p&gt;Strictly speaking, all you need to develop with &lt;em&gt;freedom.js&lt;/em&gt; is the
 &lt;a href=&#34;http://www.freedomjs.org/dist/freedom/latest/freedom.js&#34;&gt;library itself&lt;/a&gt;,
 a browser, and a web server (for example,
 &lt;a href=&#34;https://docs.python.org/2/library/simplehttpserver.html&#34;&gt;SimpleHTTPServer&lt;/a&gt;
@@ -170,14 +178,14 @@ get started:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.npmjs.com/&#34;&gt;npm&lt;/a&gt; - a package manager (installed from
-&lt;a href=&#34;http://nodejs.org/&#34;&gt;nodejs.org&lt;/a&gt;), lets you fetch freedom.js and
+&lt;a href=&#34;http://nodejs.org/&#34;&gt;nodejs.org&lt;/a&gt;), lets you fetch &lt;em&gt;freedom.js&lt;/em&gt; and
 related modules/dependencies/tooling&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://gruntjs.com/&#34;&gt;grunt&lt;/a&gt; - a task runner, facilitates linting,
 building, testing, and deploying projects&lt;/li&gt;
 &lt;li&gt;&amp;hellip; (TODO testing, maybe alternatives like gulp, etc.)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;freedom.js is agnostic about the tools you use, but our provided
+&lt;p&gt;&lt;em&gt;freedom.js&lt;/em&gt; is agnostic about the tools you use, but our provided
 generators and scripts generally assume use of npm, grunt, TODO (tests
 etc.). Getting started means
 &lt;a href=&#34;https://docs.npmjs.com/getting-started/installing-node&#34;&gt;installing node and npm&lt;/a&gt;,
@@ -197,7 +205,7 @@ just &lt;code&gt;grunt&lt;/code&gt; for the default task. You can also dive into
 &lt;code&gt;Gruntfile.js&lt;/code&gt; and edit or add your own tasks.&lt;/p&gt;
 
 &lt;p&gt;Once you have your setup to your liking, continue on and learn more
-about freedom.js itself!&lt;/p&gt;
+about &lt;em&gt;freedom.js&lt;/em&gt; itself!&lt;/p&gt;
 </description>
     </item>
     
@@ -228,9 +236,9 @@ src/static/freedomjs-icon.png
 src/static/style.css
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;These files are your freedom.js module - they specify layout/browser
-logic (&lt;code&gt;index.html&lt;/code&gt; and &lt;code&gt;page.js&lt;/code&gt;), freedom.js application logic
-(&lt;code&gt;freedom-module.js&lt;/code&gt;), freedom.js API and dependencies/permissions
+&lt;p&gt;These files are your &lt;em&gt;freedom.js&lt;/em&gt; module - they specify layout/browser
+logic (&lt;code&gt;index.html&lt;/code&gt; and &lt;code&gt;page.js&lt;/code&gt;), &lt;em&gt;freedom.js&lt;/em&gt; application logic
+(&lt;code&gt;freedom-module.js&lt;/code&gt;), &lt;em&gt;freedom.js&lt;/em&gt; API and dependencies/permissions
 (&lt;code&gt;freedom-module.json&lt;/code&gt;), and styling or other static resources such as graphics
 (&lt;code&gt;static/&lt;/code&gt;). In the above list they all live off of &lt;code&gt;src/&lt;/code&gt; to reflect that they
 are the source code view of your application - they will later be copied to
@@ -248,7 +256,7 @@ message passing defined by its API to interact with and update the webpage.&lt;/
 &lt;p&gt;Web workers are a standard intended to enable the concurrent execution of
 multiple JavaScript threads - a prototypical use would be to &lt;a href=&#34;http://dev.w3.org/html5/workers/#a-background-number-crunching-worker&#34;&gt;calculate
 something computationally expensive (e.g. large prime numbers)&lt;/a&gt;
-while not interfering with the user interface. freedom.js uses these workers as
+while not interfering with the user interface. &lt;em&gt;freedom.js&lt;/em&gt; uses these workers as
 module containers, which combined with an enforced API leads to a clearer
 picture of the behavior of the overall application.&lt;/p&gt;
 
@@ -262,14 +270,14 @@ for convenience.&lt;/p&gt;
 &lt;p&gt;The functionality of the application is simple - click the button to increment
 the displayed count. The key insight is that the displayed count is part of the
 webpage and is updated through the DOM, but the incrementing itself occurs in
-the freedom.js module. Following is the program flow - see if you can find the
+the &lt;em&gt;freedom.js&lt;/em&gt; module. Following is the program flow - see if you can find the
 lines of code corresponding to each step (answers are linked but see if you can
 first find the spots without peeking).&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;The browser loads the page and freedom.js is loaded with a given manifest
+&lt;li&gt;The browser loads the page and &lt;em&gt;freedom.js&lt;/em&gt; is loaded with a given manifest
 (&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L21-27&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
-&lt;li&gt;freedom.js running in the browser creates the initial freedom module object
+&lt;li&gt;&lt;em&gt;freedom.js&lt;/em&gt; running in the browser creates the initial freedom module object
 (&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L12&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
 &lt;li&gt;The freedom module itself is instantiated from the given starting value
 (&lt;em&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom-starter/blob/master/src/freedom-module.js#L9-12&#34;&gt;answer&lt;/a&gt;&lt;/em&gt;)&lt;/li&gt;
@@ -290,14 +298,14 @@ running in the browser, you need to be able to envision the divide between the
 code that interacts with the DOM (in this case &lt;code&gt;page.js&lt;/code&gt;) and the code that
 runs in a web worker (in this case &lt;code&gt;freedom-module.js&lt;/code&gt;). The former is
 responsible for both updating the visible page and handling user interaction
-with it, while the latter is responsible for running whatever freedom.js
+with it, while the latter is responsible for running whatever &lt;em&gt;freedom.js&lt;/em&gt;
 application logic you create, storing state, and communicating that state wtih
 the code running directly in the browser. In this specific case, &lt;code&gt;page.js&lt;/code&gt;
 knows about the button clicks and is responsible for updating the displayed
 count, while &lt;code&gt;freedom-module.js&lt;/code&gt; knows the actual count value and increments
 and returns it when requested.&lt;/p&gt;
 
-&lt;p&gt;The above addresses the starter code that is directly part of a freedom.js
+&lt;p&gt;The above addresses the starter code that is directly part of a &lt;em&gt;freedom.js&lt;/em&gt;
 module. Depending on your choice of tooling, you may also have files like:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;Gruntfile.js
@@ -314,11 +322,11 @@ documentation, as described below.&lt;/p&gt;
 &lt;p&gt;Any piece of computer technology is inevitably built on a deep stack
 eventually going down to &lt;a href=&#34;http://xkcd.com/1349/&#34;&gt;sand and physics&lt;/a&gt; -
 this tutorial focuses on giving you enough knowledge and context to
-develop freedom.js modules, but should you find yourself wanting to
+develop &lt;em&gt;freedom.js&lt;/em&gt; modules, but should you find yourself wanting to
 dig deeper then here are some places to start:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom/wiki&#34;&gt;freedom.js wiki&lt;/a&gt; - more
+&lt;li&gt;&lt;a href=&#34;https://github.com/freedomjs/freedom/wiki&#34;&gt;&lt;em&gt;freedom.js&lt;/em&gt; wiki&lt;/a&gt; - more
 documentation and API reference&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.npmjs.com/&#34;&gt;npm docs&lt;/a&gt; - more on how to both get
 packages from npm and deploy your own&lt;/li&gt;
@@ -330,7 +338,7 @@ is a quick interactive tutorial&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;It&amp;rsquo;s also valuable to learn about developing traditional (centralized)
-web applications. freedom.js requires thinking differently (especially
+web applications. &lt;em&gt;freedom.js&lt;/em&gt; requires thinking differently (especially
 about data storage and peer communication), but it&amp;rsquo;s useful to
 understand both perspectives. There is a fair amount of skill overlap
 (understanding templates, network requests, etc.), and for many
@@ -366,7 +374,7 @@ username)&lt;/li&gt;
 
 &lt;p&gt;On top of that, we want our particular chat application to sign and encrypt
 outgoing messages and verify and decrypt incoming ones. And since we&amp;rsquo;re using
-freedom.js, we want to do all of this in as decentralized a manner as possible,
+&lt;em&gt;freedom.js&lt;/em&gt;, we want to do all of this in as decentralized a manner as possible,
 while still building a pragmatic and usable application.&lt;/p&gt;
 
 &lt;p&gt;Unfortunately the Internet has not settled on a decentralized social network,
@@ -378,9 +386,9 @@ users can choose between them more freely. And the encryption will also occur
 entirely on the client side, reducing the social network to a relatively
 uninformed and untrusted message passing channel.&lt;/p&gt;
 
-&lt;p&gt;As we learned in &lt;a href=&#34;../03howfreedomworks&#34;&gt;the previous section&lt;/a&gt;, freedom.js works
-by executing concurrent JavaScript threads in web workers that communicate via
-message passing. Each web worker is a freedom.js module that should have a
+&lt;p&gt;As we learned in &lt;a href=&#34;../03howfreedomworks&#34;&gt;the previous section&lt;/a&gt;, &lt;em&gt;freedom.js&lt;/em&gt;
+works by executing concurrent JavaScript threads in web workers that communicate
+via message passing. Each web worker is a &lt;em&gt;freedom.js&lt;/em&gt; module that should have a
 distinct purpose, and there is also typically at least some JavaScript executed
 directly in the browser (so it can interact with the user and the DOM). Let us
 consider separating our chat application into three modules (not counting the
@@ -393,7 +401,7 @@ direct-in-browser code):&lt;/p&gt;
 JavaScript running directly in the browser with the other two modules)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Of these three, we only need to actually write the last one - freedom.js
+&lt;p&gt;Of these three, we only need to actually write the last one - &lt;em&gt;freedom.js&lt;/em&gt;
 provides a
 &lt;a href=&#34;https://github.com/freedomjs/freedom/blob/master/interface/social.json&#34;&gt;social API&lt;/a&gt;
 as well as some standard providers for us to get started, and we will be using
@@ -405,13 +413,13 @@ a PGP-like interface for encryption.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;User interface&lt;/strong&gt; - HTML, static resources (CSS, images)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;&amp;ldquo;Outer&amp;rdquo; JavaScript&lt;/strong&gt; - runs directly in browser and not a web worker,
-responsible for starting freedom.js, interacting with the main module, and
+responsible for starting &lt;em&gt;freedom.js&lt;/em&gt;, interacting with the main module, and
 updating the DOM with new information (as well as general UI/UX niceties)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Main freedom.js module&lt;/strong&gt; - core of Dorabella, receives messages from
+&lt;li&gt;&lt;strong&gt;Main &lt;em&gt;freedom.js&lt;/em&gt; module&lt;/strong&gt; - core of Dorabella, receives messages from
 &amp;ldquo;outer&amp;rdquo; JavaScript, uses social and crypto modules, and returns results&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Social API&lt;/strong&gt; - built-in freedom.js interface for finding and communicating
+&lt;li&gt;&lt;strong&gt;Social API&lt;/strong&gt; - built-in &lt;em&gt;freedom.js&lt;/em&gt; interface for finding and communicating
 with friends via a variety of social media services&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;PGP API&lt;/strong&gt; - freedom.js module that provides PGP-style crypto functionality&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PGP API&lt;/strong&gt; - &lt;em&gt;freedom.js&lt;/em&gt; module that provides PGP-style crypto functionality&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;TODO diagram?&lt;/p&gt;
@@ -425,10 +433,10 @@ JavaScript, and ensuring that this API facilitates all needed uses of the other
 (social and crypto) modules.&lt;/p&gt;
 
 &lt;p&gt;The API is specified from the point of view of the outer JavaScript, listing
-both methods that it can invoke on the instantiated freedom.js module and
+both methods that it can invoke on the instantiated &lt;em&gt;freedom.js&lt;/em&gt; module and
 events from the module that can be listened for. The values for methods are
 arguments that are passed in, while the values for events contain whatever
-information the freedom.js module is sending to the outer page.&lt;/p&gt;
+information the &lt;em&gt;freedom.js&lt;/em&gt; module is sending to the outer page.&lt;/p&gt;
 
 &lt;table&gt;
   &lt;tr&gt;
@@ -494,10 +502,16 @@ before settling on something like the above. You will find yourself referring
 back to the API throughout development, so it&amp;rsquo;s worth making it clear and
 literate - not too short and not too long.&lt;/p&gt;
 
-&lt;p&gt;TODO link to json manifest version of API&lt;/p&gt;
+&lt;p&gt;Once a reasonable API has been decided, it should be added to the JSON manifest
+describing the application. &lt;a href=&#34;https://github.com/soycode/dorabella/blob/master/src/securechat.json&#34;&gt;This is the Dorabella manifest&lt;/a&gt; - in
+addition to the API, it enumerates the files that Dorabella is composed of and
+its &lt;em&gt;freedom.js&lt;/em&gt; dependencies (the social and PGP providers). The API described
+is labeled &lt;code&gt;chat&lt;/code&gt;, and the &lt;em&gt;freedom.js&lt;/em&gt; module we are writing provides an
+implementation of this API that is usable not only as a standalone application
+but potentially as a dependency to be embedded in a larger application.&lt;/p&gt;
 
 &lt;p&gt;Now that we have the API under our belt, let&amp;rsquo;s push on to implementation,
-starting with the core Dorabella freedom.js module.&lt;/p&gt;
+starting with the core Dorabella &lt;em&gt;freedom.js&lt;/em&gt; module.&lt;/p&gt;
 </description>
     </item>
     
@@ -509,7 +523,7 @@ starting with the core Dorabella freedom.js module.&lt;/p&gt;
       <guid>http://www.freedomjs.org/tutorial/05dorabellacore/</guid>
       <description>
 
-&lt;p&gt;In this section we will flesh out the core of the main freedom.js module for
+&lt;p&gt;In this section we will flesh out the core of the main &lt;em&gt;freedom.js&lt;/em&gt; module for
 Dorabella, providing the API functionality needed for the overall application.
 We will leave the specifics of interacting with the modules we depend on for
 later sections, and focus on giving an overall picture of how the module works.&lt;/p&gt;
@@ -524,11 +538,11 @@ later sections, and focus on giving an overall picture of how the module works.&
 
 &lt;h1 id=&#34;making-the-implementation-usable:14d62cfdcb3e6e2c0fd2aa2c09133779&#34;&gt;Making the implementation usable&lt;/h1&gt;
 
-&lt;p&gt;To invoke methods in the module, they must be made visible to freedom.js. This
-is similar to how node.js modules export their functionality, but in freedom.js
-we will invoke a method such as &lt;code&gt;providePromises&lt;/code&gt;. This will tell freedom.js
-that the object we constructed above satisfies the API specified in the
-manifest (&lt;code&gt;freedom-module.json&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;To invoke methods in the module, they must be made visible to &lt;em&gt;freedom.js&lt;/em&gt;. This
+is similar to how node.js modules export their functionality, but in
+&lt;em&gt;freedom.js&lt;/em&gt; we will invoke a method such as &lt;code&gt;providePromises&lt;/code&gt;. This will tell
+&lt;em&gt;freedom.js&lt;/em&gt; that the object we constructed above satisfies the API specified in
+the manifest (&lt;code&gt;securechat.json&lt;/code&gt;)&lt;/p&gt;
 
 &lt;p&gt;TODO&lt;/p&gt;
 </description>
@@ -546,14 +560,14 @@ manifest (&lt;code&gt;freedom-module.json&lt;/code&gt;).&lt;/p&gt;
 implementation of several of the main module methods. At the end we will have a
 functional chat application, though not yet with encryption.&lt;/p&gt;
 
-&lt;h1 id=&#34;depending-on-other-freedom-js-modules:ca069b1b62aa2f17687129c55996856a&#34;&gt;Depending on other freedom.js modules&lt;/h1&gt;
+&lt;h1 id=&#34;depending-on-other-freedom-js-modules:ca069b1b62aa2f17687129c55996856a&#34;&gt;Depending on other &lt;em&gt;freedom.js&lt;/em&gt; modules&lt;/h1&gt;
 
 &lt;p&gt;Our application is growing larger - we now need to think not just about the
-&amp;ldquo;outer&amp;rdquo; page communicating with the main freedom.js module, but also the main
-freedom.js module loading and communicating with other freedom.js modules. At
-first this may seem like a lot of work, but there are significant advantages to
-a modular approach. Over time we hope to see an ecosystem of freedom.js modules
-that enable developers to get a quick start in developing a variety of
+&amp;ldquo;outer&amp;rdquo; page communicating with the main &lt;em&gt;freedom.js&lt;/em&gt; module, but also the main
+&lt;em&gt;freedom.js&lt;/em&gt; module loading and communicating with other &lt;em&gt;freedom.js&lt;/em&gt; modules.
+At first this may seem like a lot of work, but there are significant advantages
+to a modular approach. Over time we hope to see an ecosystem of &lt;em&gt;freedom.js&lt;/em&gt;
+modules that enable developers to get a quick start in developing a variety of
 decentralized applications.&lt;/p&gt;
 
 &lt;p&gt;TODO&lt;/p&gt;
@@ -576,7 +590,7 @@ and make sure it provides all the necessary information and interaction.&lt;/p&g
       <description>
 
 &lt;p&gt;In this section we will use the PGP api along with a trustworthy cryptography
-provider to employ signing/encryption and verifying/decryption in a freedom.js
+provider to employ signing/encryption and verifying/decryption in a &lt;em&gt;freedom.js&lt;/em&gt;
 application.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;An aside&lt;/em&gt; - you may be thinking &amp;ldquo;isn&amp;rsquo;t
@@ -602,7 +616,7 @@ and want to ensure those keys stay safe.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Of course, the important remaining issue is that, if you use a
-freedom.js application by simply visiting a webpage, you are still
+&lt;em&gt;freedom.js&lt;/em&gt; application by simply visiting a webpage, you are still
 trusting that server (and your connection to it) to deliver the true
 application on every page load. This can be mitigated by packaging the
 application (e.g. as a browser extension or mobile application),
@@ -622,10 +636,10 @@ better than &amp;ldquo;no&amp;rdquo; security.&lt;/p&gt;
 &lt;p&gt;In other words:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;em&gt;Do use crypto with freedom.js if&lt;/em&gt; -  you want a bit more privacy
+&lt;li&gt;&lt;strong&gt;Do use crypto with &lt;em&gt;freedom.js&lt;/em&gt; if&lt;/strong&gt; -  you want a bit more privacy
 and control over your data than you get with most existing web
 applications.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Don&amp;rsquo;t use crypto with freedom.js if&lt;/em&gt; - you&amp;rsquo;re planning a coup,
+&lt;li&gt;&lt;strong&gt;Don&amp;rsquo;t use crypto with &lt;em&gt;freedom.js&lt;/em&gt; if&lt;/strong&gt; - you&amp;rsquo;re planning a coup,
 trying to hide from a modern nation-state, or want to stop the Men
 in Black from reading your thoughts.&lt;/li&gt;
 &lt;/ul&gt;
@@ -666,7 +680,7 @@ in Black from reading your thoughts.&lt;/li&gt;
 
 &lt;h1 id=&#34;make-an-app:0d9f956dd8c7479f16894b65123eba61&#34;&gt;Make an app!&lt;/h1&gt;
 
-&lt;p&gt;The single best thing you can do for freedom.js is to use the
+&lt;p&gt;The single best thing you can do for &lt;em&gt;freedom.js&lt;/em&gt; is to use the
 knowledge you&amp;rsquo;ve gained from this tutorial and go out and make
 something - any app, large or small, that is built to enable
 decentralization makes the entire decentralized ecosystem stronger. So
@@ -676,7 +690,7 @@ longterm project, and share your creation with the world.&lt;/p&gt;
 &lt;h1 id=&#34;give-us-feedback:0d9f956dd8c7479f16894b65123eba61&#34;&gt;Give us feedback&lt;/h1&gt;
 
 &lt;p&gt;As you&amp;rsquo;re making an app you may think of things you wish were
-different about freedom.js - maybe a new feature it could support,
+different about &lt;em&gt;freedom.js&lt;/em&gt; - maybe a new feature it could support,
 or a bug that should be
 fixed. &lt;a href=&#34;https://github.com/freedomjs/freedom/issues&#34;&gt;GitHub issues&lt;/a&gt;
 are our preferred workflow for this sort of feedback, and we also have
@@ -684,23 +698,23 @@ a
 &lt;a href=&#34;https://groups.google.com/forum/#!forum/freedomjs-users&#34;&gt;freedomjs-users Google group&lt;/a&gt;
 for updates and discussion.&lt;/p&gt;
 
-&lt;h1 id=&#34;develop-freedom-js-providers:0d9f956dd8c7479f16894b65123eba61&#34;&gt;Develop freedom.js providers&lt;/h1&gt;
+&lt;h1 id=&#34;develop-freedom-js-providers:0d9f956dd8c7479f16894b65123eba61&#34;&gt;Develop &lt;em&gt;freedom.js&lt;/em&gt; providers&lt;/h1&gt;
 
-&lt;p&gt;freedom.js includes providers for all its interfaces, but you can also
+&lt;p&gt;&lt;em&gt;freedom.js&lt;/em&gt; includes providers for all its interfaces, but you can also
 create new providers that satisfy the same interfaces, expanding the
-realm of freedom.js functionality. For instance, a new social provider
-compatible with the latest hip social network would allow freedom.js
+realm of &lt;em&gt;freedom.js&lt;/em&gt; functionality. For instance, a new social provider
+compatible with the latest hip social network would allow &lt;em&gt;freedom.js&lt;/em&gt;
 apps (old and new) to seamlessly adopt it as an alternative to the
 existing social network providers.&lt;/p&gt;
 
-&lt;h1 id=&#34;contribute-to-freedom-js:0d9f956dd8c7479f16894b65123eba61&#34;&gt;Contribute to freedom.js&lt;/h1&gt;
+&lt;h1 id=&#34;contribute-to-freedom-js:0d9f956dd8c7479f16894b65123eba61&#34;&gt;Contribute to &lt;em&gt;freedom.js&lt;/em&gt;&lt;/h1&gt;
 
-&lt;p&gt;freedom.js is developed in the open across our
+&lt;p&gt;&lt;em&gt;freedom.js&lt;/em&gt; is developed in the open across our
 &lt;a href=&#34;https://github.com/freedomjs&#34;&gt;GitHub repos&lt;/a&gt;, and we welcome
 &lt;a href=&#34;https://github.com/freedomjs/freedom/pulls&#34;&gt;pull requests&lt;/a&gt; with
-contributions. Note that contributions to the core of freedom.js are
+contributions. Note that contributions to the core of &lt;em&gt;freedom.js&lt;/em&gt; are
 different from writing your own providers - they should be something
-that is useful to all freedom.js users (such as a bugfix or new
+that is useful to all &lt;em&gt;freedom.js&lt;/em&gt; users (such as a bugfix or new
 compatibility shim).&lt;/p&gt;
 
 &lt;p&gt;Thanks for reading, and Hack On!&lt;/p&gt;

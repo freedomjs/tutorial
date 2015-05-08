@@ -17,13 +17,16 @@
   <link rel="stylesheet" href="http://www.freedomjs.org/tutorial/css/hyde-x.css">
   
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
   <link href="/favicon.png" rel="icon">
 
   
-  <link href="" rel="alternate" type="application/rss+xml" title="freedom.js tutorial &middot; UW Networks Lab" />
+  
+  
+  
 
   <meta name="description" content="Tutorial for freedom.js, a framework for peer-to-peer web apps">
   <meta name="keywords" content="javascript,freedom.js,decentralized,tutorial">
@@ -64,17 +67,22 @@
     </ul>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="https://github.com/freedomjs">GitHub</a></li>
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/freedomjs"><i class="fa fa-github-square fa-3x"></i></a>
       
       
       
       
+      
+      </li>
     </ul>
 
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
     <p>By <a href="http://netlab.cs.washington.edu/">UW Networks Labs</a>, <a href="http://www.freedomjs.org/tutorial/license">License</a><br/>
        Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
+
 
 <div class="content container">
   <div class="post">
@@ -98,7 +106,7 @@ username)</li>
 
 <p>On top of that, we want our particular chat application to sign and encrypt
 outgoing messages and verify and decrypt incoming ones. And since we&rsquo;re using
-freedom.js, we want to do all of this in as decentralized a manner as possible,
+<em>freedom.js</em>, we want to do all of this in as decentralized a manner as possible,
 while still building a pragmatic and usable application.</p>
 
 <p>Unfortunately the Internet has not settled on a decentralized social network,
@@ -110,9 +118,9 @@ users can choose between them more freely. And the encryption will also occur
 entirely on the client side, reducing the social network to a relatively
 uninformed and untrusted message passing channel.</p>
 
-<p>As we learned in <a href="../03howfreedomworks">the previous section</a>, freedom.js works
-by executing concurrent JavaScript threads in web workers that communicate via
-message passing. Each web worker is a freedom.js module that should have a
+<p>As we learned in <a href="../03howfreedomworks">the previous section</a>, <em>freedom.js</em>
+works by executing concurrent JavaScript threads in web workers that communicate
+via message passing. Each web worker is a <em>freedom.js</em> module that should have a
 distinct purpose, and there is also typically at least some JavaScript executed
 directly in the browser (so it can interact with the user and the DOM). Let us
 consider separating our chat application into three modules (not counting the
@@ -125,7 +133,7 @@ direct-in-browser code):</p>
 JavaScript running directly in the browser with the other two modules)</li>
 </ul>
 
-<p>Of these three, we only need to actually write the last one - freedom.js
+<p>Of these three, we only need to actually write the last one - <em>freedom.js</em>
 provides a
 <a href="https://github.com/freedomjs/freedom/blob/master/interface/social.json">social API</a>
 as well as some standard providers for us to get started, and we will be using
@@ -137,13 +145,13 @@ a PGP-like interface for encryption.</p>
 <ul>
 <li><strong>User interface</strong> - HTML, static resources (CSS, images)</li>
 <li><strong>&ldquo;Outer&rdquo; JavaScript</strong> - runs directly in browser and not a web worker,
-responsible for starting freedom.js, interacting with the main module, and
+responsible for starting <em>freedom.js</em>, interacting with the main module, and
 updating the DOM with new information (as well as general UI/UX niceties)</li>
-<li><strong>Main freedom.js module</strong> - core of Dorabella, receives messages from
+<li><strong>Main <em>freedom.js</em> module</strong> - core of Dorabella, receives messages from
 &ldquo;outer&rdquo; JavaScript, uses social and crypto modules, and returns results</li>
-<li><strong>Social API</strong> - built-in freedom.js interface for finding and communicating
+<li><strong>Social API</strong> - built-in <em>freedom.js</em> interface for finding and communicating
 with friends via a variety of social media services</li>
-<li><strong>PGP API</strong> - freedom.js module that provides PGP-style crypto functionality</li>
+<li><strong>PGP API</strong> - <em>freedom.js</em> module that provides PGP-style crypto functionality</li>
 </ul>
 
 <p>TODO diagram?</p>
@@ -157,10 +165,10 @@ JavaScript, and ensuring that this API facilitates all needed uses of the other
 (social and crypto) modules.</p>
 
 <p>The API is specified from the point of view of the outer JavaScript, listing
-both methods that it can invoke on the instantiated freedom.js module and
+both methods that it can invoke on the instantiated <em>freedom.js</em> module and
 events from the module that can be listened for. The values for methods are
 arguments that are passed in, while the values for events contain whatever
-information the freedom.js module is sending to the outer page.</p>
+information the <em>freedom.js</em> module is sending to the outer page.</p>
 
 <table>
   <tr>
@@ -226,10 +234,16 @@ before settling on something like the above. You will find yourself referring
 back to the API throughout development, so it&rsquo;s worth making it clear and
 literate - not too short and not too long.</p>
 
-<p>TODO link to json manifest version of API</p>
+<p>Once a reasonable API has been decided, it should be added to the JSON manifest
+describing the application. <a href="https://github.com/soycode/dorabella/blob/master/src/securechat.json">This is the Dorabella manifest</a> - in
+addition to the API, it enumerates the files that Dorabella is composed of and
+its <em>freedom.js</em> dependencies (the social and PGP providers). The API described
+is labeled <code>chat</code>, and the <em>freedom.js</em> module we are writing provides an
+implementation of this API that is usable not only as a standalone application
+but potentially as a dependency to be embedded in a larger application.</p>
 
 <p>Now that we have the API under our belt, let&rsquo;s push on to implementation,
-starting with the core Dorabella freedom.js module.</p>
+starting with the core Dorabella <em>freedom.js</em> module.</p>
 
   </div>
   

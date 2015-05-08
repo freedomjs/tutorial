@@ -17,13 +17,16 @@
   <link rel="stylesheet" href="http://www.freedomjs.org/tutorial/css/hyde-x.css">
   
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
   <link href="/favicon.png" rel="icon">
 
   
-  <link href="" rel="alternate" type="application/rss+xml" title="freedom.js tutorial &middot; UW Networks Lab" />
+  
+  
+  
 
   <meta name="description" content="Tutorial for freedom.js, a framework for peer-to-peer web apps">
   <meta name="keywords" content="javascript,freedom.js,decentralized,tutorial">
@@ -64,24 +67,29 @@
     </ul>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="https://github.com/freedomjs">GitHub</a></li>
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/freedomjs"><i class="fa fa-github-square fa-3x"></i></a>
       
       
       
       
+      
+      </li>
     </ul>
 
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
     <p>By <a href="http://netlab.cs.washington.edu/">UW Networks Labs</a>, <a href="http://www.freedomjs.org/tutorial/license">License</a><br/>
        Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
+
 
 <div class="content container">
   <div class="post">
     <h1>05 - The core of Dorabella</h1>
     
 
-<p>In this section we will flesh out the core of the main freedom.js module for
+<p>In this section we will flesh out the core of the main <em>freedom.js</em> module for
 Dorabella, providing the API functionality needed for the overall application.
 We will leave the specifics of interacting with the modules we depend on for
 later sections, and focus on giving an overall picture of how the module works.</p>
@@ -96,11 +104,11 @@ later sections, and focus on giving an overall picture of how the module works.<
 
 <h1 id="making-the-implementation-usable:14d62cfdcb3e6e2c0fd2aa2c09133779">Making the implementation usable</h1>
 
-<p>To invoke methods in the module, they must be made visible to freedom.js. This
-is similar to how node.js modules export their functionality, but in freedom.js
-we will invoke a method such as <code>providePromises</code>. This will tell freedom.js
-that the object we constructed above satisfies the API specified in the
-manifest (<code>freedom-module.json</code>).</p>
+<p>To invoke methods in the module, they must be made visible to <em>freedom.js</em>. This
+is similar to how node.js modules export their functionality, but in
+<em>freedom.js</em> we will invoke a method such as <code>providePromises</code>. This will tell
+<em>freedom.js</em> that the object we constructed above satisfies the API specified in
+the manifest (<code>securechat.json</code>)</p>
 
 <p>TODO</p>
 

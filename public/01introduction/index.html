@@ -17,13 +17,16 @@
   <link rel="stylesheet" href="http://www.freedomjs.org/tutorial/css/hyde-x.css">
   
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
   <link href="/favicon.png" rel="icon">
 
   
-  <link href="" rel="alternate" type="application/rss+xml" title="freedom.js tutorial &middot; UW Networks Lab" />
+  
+  
+  
 
   <meta name="description" content="Tutorial for freedom.js, a framework for peer-to-peer web apps">
   <meta name="keywords" content="javascript,freedom.js,decentralized,tutorial">
@@ -64,26 +67,31 @@
     </ul>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="https://github.com/freedomjs">GitHub</a></li>
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/freedomjs"><i class="fa fa-github-square fa-3x"></i></a>
       
       
       
       
+      
+      </li>
     </ul>
 
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
     <p>By <a href="http://netlab.cs.washington.edu/">UW Networks Labs</a>, <a href="http://www.freedomjs.org/tutorial/license">License</a><br/>
        Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
+
 
 <div class="content container">
   <div class="post">
     <h1>01 - Introduction</h1>
     
 
-<h1 id="what-is-freedom-js-and-why-should-i-care:c671dff226dbd268b9535b226b05b473">What is freedom.js, and why should I care?</h1>
+<h1 id="what-is-freedom-js-and-why-should-i-care:c671dff226dbd268b9535b226b05b473">What is <em>freedom.js</em>, and why should I care?</h1>
 
-<p>freedom.js is a JavaScript framework that facilitates developing
+<p><em>freedom.js</em> is a JavaScript framework that facilitates developing
 <a href="https://en.wikipedia.org/wiki/Peer-to-peer">peer-to-peer (P2P)</a>
 applications. These sorts of applications have been around for awhile
 and can be pretty nifty - they give the developer a low-cost way to
@@ -93,41 +101,41 @@ sophisticated understanding of networking and security. Doing so in
 the browser - the increasingly important yet constantly changing
 application platform - is even harder.</p>
 
-<p>This is where freedom.js comes in - we provide a framework where
+<p>This is where <em>freedom.js</em> comes in - we provide a framework where
 common functionality (social, storage, network transport, etc.) has a
 standard interface and a suite of providers that run across typical
 JavaScript platforms (currently Chrome, Firefox, and Node.js). Want to
 write an app that lets people connect directly to each other in their
 browsers, choosing their friends from existing social networks?
-freedom.js takes care of the details, letting you focus on your
+<em>freedom.js</em> takes care of the details, letting you focus on your
 application logic.</p>
 
 <p>How does this work? You&rsquo;ll learn more throughout the tutorial, but the
-core of it is that a freedom.js app specifies its API and dependencies
-via a manifest, and then freedom.js uses
+core of it is that a <em>freedom.js</em> app specifies its API and dependencies
+via a manifest, and then <em>freedom.js</em> uses
 <a href="https://en.wikipedia.org/wiki/Web_worker">web workers</a> to run the
 application and related modules. These modules run independently and
 so must communicate (message passing via the specified API), but this
 isolation and abstraction allows for applications to run across
 computers and users - resulting in decentralized peer-to-peer applications.</p>
 
-<p>freedom.js is open source
+<p><em>freedom.js</em> is open source
 (<a href="http://opensource.org/licenses/Apache-2.0">Apache License 2.0</a>)
 and you can find our repositories on
 <a href="https://github.com/freedomjs">GitHub</a>. We&rsquo;re actively developing and
 enhancing the platform, and welcome community contributions. One of
-the best ways to get started is to just use freedom.js to develop an
+the best ways to get started is to just use <em>freedom.js</em> to develop an
 application - so think some about what you want to make, and read on!</p>
 
-<h1 id="what-are-some-apps-that-have-been-built-using-freedom-js:c671dff226dbd268b9535b226b05b473">What are some apps that have been built using freedom.js?</h1>
+<h1 id="what-are-some-apps-that-have-been-built-using-freedom-js:c671dff226dbd268b9535b226b05b473">What are some apps that have been built using <em>freedom.js</em>?</h1>
 
-<p>To get an idea of the sorts of things you can do with freedom.js, here
+<p>To get an idea of the sorts of things you can do with <em>freedom.js</em>, here
 are some existing applications:</p>
 
 <ul>
 <li><strong>Take Turns, Sally</strong>
 (<a href="https://github.com/ryscheng/taketurns">repo</a>,
-<a href="http://taketurns.sally.wtf/">app</a>) - a freedom.js application that
+<a href="http://taketurns.sally.wtf/">app</a>) - a <em>freedom.js</em> application that
 exposes a simple queue. Everyone in the meeting pops open their
 laptop/smartphone and navigates to the URL. Agree on a &ldquo;room name&rdquo; and
 choose 1 leader in the group. Then queue up to talk!</li>
@@ -141,10 +149,10 @@ may try to watch, block, or redirect users&rsquo; Internet connections.</li>
 allowing users to generate and exchange keys to secure their further
 communication. This is the application that we will build together in
 this tutorial - you&rsquo;ll learn about social and cryptography providers,
-as well as general freedom.js module design and structure.</li>
+as well as general <em>freedom.js</em> module design and structure.</li>
 </ul>
 
-<p>freedom.js also has
+<p><em>freedom.js</em> also has
 <a href="http://www.freedomjs.org/dist/freedom/latest/demo/">demo apps</a> that
 can serve as useful examples while developing (including a chat demo
 that is the base of Dorabella).</p>
@@ -158,23 +166,31 @@ JavaScript ecosystem then picking and choosing or skipping through may
 make sense. The topics of the remaining sections are:</p>
 
 <ul>
-<li><a href="../02devsetup">Dev Environment Setup</a> - the basic commands you need to install
-freedom.js and related development tools</li>
-<li><a href="../03howfreedomworks">How freedom.js works</a> - an explanation of the control and messaging
-flow of a freedom.js-powered application</li>
-<li><a href="../04dorabelladesign">Designing Dorabella</a> - how to plan the structure and API of an app</li>
-<li><a href="../05dorabellacore">The core of Dorabella</a> - once it&rsquo;s planned, how to get started
-implementing the boilerplate and beyond</li>
-<li><a href="../06dorabellachat">Implementing chat</a> - the main task of Dorabella, and a tour of the
-freedom.js social interface</li>
-<li><a href="../07dorabellacrypto">Using crypto in freedom.js</a> - an important but sensitive part of
-development, also provided by freedom.js</li>
-<li><a href="../08dorabellapolish">Polishing Dorabella</a> - testing, automation, and those other tweaks
-that make an app ready to go</li>
-<li><a href="../09deploymentandbeyond">Deployment and Beyond</a> - now that the app is written, it&rsquo;s time to
-get it out there</li>
-<li><a href="../10howtohelpfreedom">How to help freedom.js</a> - we&rsquo;re an open source project and welcome
-contributions!</li>
+<li><a href="../02devsetup">Dev Environment Setup</a> - the basic commands you need to
+install <em>freedom.js</em> and related development tools</li>
+<li><a href="../03howfreedomworks">How <em>freedom.js</em> works</a> - an explanation of the control
+and messaging flow of a <em>freedom.js</em>-powered application</li>
+<li><a href="../04dorabelladesign">Designing Dorabella</a> - how to plan the structure and
+API of an app</li>
+<li><a href="../05dorabellacore">The core of Dorabella</a> - once it&rsquo;s planned, how to get
+started implementing the boilerplate and beyond</li>
+<li><a href="../06dorabellachat">Implementing chat</a> - the main task of Dorabella, and a
+tour of the <em>freedom.js</em> social interface
+
+<ul>
+<li><a href="../07dorabellacrypto">Using crypto in <em>freedom.js</em></a> - an important but
+sensitive part of development, also provided by <em>freedom.js</em></li>
+</ul></li>
+<li><a href="../08dorabellapolish">Polishing Dorabella</a> - testing, automation, and those
+other tweaks that make an app ready to go</li>
+<li><a href="../09deploymentandbeyond">Deployment and Beyond</a> - now that the app is
+written, it&rsquo;s time to get it out there
+
+<ul>
+<li><a href="../10howtohelpfreedom">How to help <em>freedom.js</em></a> - we&rsquo;re an open source<code>:w
+</code>
+project and welcome contributions!</li>
+</ul></li>
 </ul>
 
   </div>
