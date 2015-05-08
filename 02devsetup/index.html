@@ -17,13 +17,16 @@
   <link rel="stylesheet" href="http://www.freedomjs.org/tutorial/css/hyde-x.css">
   
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
   <link href="/favicon.png" rel="icon">
 
   
-  <link href="" rel="alternate" type="application/rss+xml" title="freedom.js tutorial &middot; UW Networks Lab" />
+  
+  
+  
 
   <meta name="description" content="Tutorial for freedom.js, a framework for peer-to-peer web apps">
   <meta name="keywords" content="javascript,freedom.js,decentralized,tutorial">
@@ -64,17 +67,22 @@
     </ul>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="https://github.com/freedomjs">GitHub</a></li>
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/freedomjs"><i class="fa fa-github-square fa-3x"></i></a>
       
       
       
       
+      
+      </li>
     </ul>
 
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
     <p>By <a href="http://netlab.cs.washington.edu/">UW Networks Labs</a>, <a href="http://www.freedomjs.org/tutorial/license">License</a><br/>
        Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
+
 
 <div class="content container">
   <div class="post">
@@ -100,20 +108,20 @@ mv freedom-starter my-freedom-app  # optional, rename as you wish
 cd my-freedom-app
 </code></pre>
 
-<p>If you selected <code>webapp template</code> as the source for <code>freedom.js</code> in Yeoman
+<p>If you selected <code>webapp template</code> as the source for <em>freedom.js</em> in Yeoman
 or if you used the <code>git clone</code> approach, then you can start the demo app with
 <code>./runserver</code> (you may need to <code>chmod +x runserver.sh</code> first to make it
 executable). If you used Yeoman and selected <code>npm</code> as the source for
-<code>freedom.js</code>, then the command <code>grunt demo</code> will start the demo app. In either
+<em>freedom.js</em>, then the command <code>grunt demo</code> will start the demo app. In either
 case, fire up a browser and head to <a href="http://localhost:8000/build/">http://localhost:8000/build/</a> to see it.</p>
 
 <p>If you&rsquo;re set, skip ahead to
-<a href="../03howfreedomworks">how freedom.js works</a>. Need a bit more
+<a href="../03howfreedomworks">how <em>freedom.js</em> works</a>. Need a bit more
 explanation on the above? Read on!</p>
 
 <h1 id="details:649baccfa024a46ec6ccf587bf61cd3c">Details</h1>
 
-<p>Strictly speaking, all you need to develop with freedom.js is the
+<p>Strictly speaking, all you need to develop with <em>freedom.js</em> is the
 <a href="http://www.freedomjs.org/dist/freedom/latest/freedom.js">library itself</a>,
 a browser, and a web server (for example,
 <a href="https://docs.python.org/2/library/simplehttpserver.html">SimpleHTTPServer</a>
@@ -128,14 +136,14 @@ get started:</p>
 
 <ul>
 <li><a href="https://www.npmjs.com/">npm</a> - a package manager (installed from
-<a href="http://nodejs.org/">nodejs.org</a>), lets you fetch freedom.js and
+<a href="http://nodejs.org/">nodejs.org</a>), lets you fetch <em>freedom.js</em> and
 related modules/dependencies/tooling</li>
 <li><a href="http://gruntjs.com/">grunt</a> - a task runner, facilitates linting,
 building, testing, and deploying projects</li>
 <li>&hellip; (TODO testing, maybe alternatives like gulp, etc.)</li>
 </ul>
 
-<p>freedom.js is agnostic about the tools you use, but our provided
+<p><em>freedom.js</em> is agnostic about the tools you use, but our provided
 generators and scripts generally assume use of npm, grunt, TODO (tests
 etc.). Getting started means
 <a href="https://docs.npmjs.com/getting-started/installing-node">installing node and npm</a>,
@@ -155,7 +163,7 @@ just <code>grunt</code> for the default task. You can also dive into
 <code>Gruntfile.js</code> and edit or add your own tasks.</p>
 
 <p>Once you have your setup to your liking, continue on and learn more
-about freedom.js itself!</p>
+about <em>freedom.js</em> itself!</p>
 
   </div>
   

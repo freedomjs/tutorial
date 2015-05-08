@@ -17,13 +17,16 @@
   <link rel="stylesheet" href="http://www.freedomjs.org/tutorial/css/hyde-x.css">
   
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
   <link href="/favicon.png" rel="icon">
 
   
-  <link href="" rel="alternate" type="application/rss+xml" title="freedom.js tutorial &middot; UW Networks Lab" />
+  
+  
+  
 
   <meta name="description" content="Tutorial for freedom.js, a framework for peer-to-peer web apps">
   <meta name="keywords" content="javascript,freedom.js,decentralized,tutorial">
@@ -64,17 +67,22 @@
     </ul>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="https://github.com/freedomjs">GitHub</a></li>
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/freedomjs"><i class="fa fa-github-square fa-3x"></i></a>
       
       
       
       
+      
+      </li>
     </ul>
 
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
     <p>By <a href="http://netlab.cs.washington.edu/">UW Networks Labs</a>, <a href="http://www.freedomjs.org/tutorial/license">License</a><br/>
        Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
+
 
 <div class="content container">
   <div class="post">
@@ -100,9 +108,9 @@ src/static/freedomjs-icon.png
 src/static/style.css
 </code></pre>
 
-<p>These files are your freedom.js module - they specify layout/browser
-logic (<code>index.html</code> and <code>page.js</code>), freedom.js application logic
-(<code>freedom-module.js</code>), freedom.js API and dependencies/permissions
+<p>These files are your <em>freedom.js</em> module - they specify layout/browser
+logic (<code>index.html</code> and <code>page.js</code>), <em>freedom.js</em> application logic
+(<code>freedom-module.js</code>), <em>freedom.js</em> API and dependencies/permissions
 (<code>freedom-module.json</code>), and styling or other static resources such as graphics
 (<code>static/</code>). In the above list they all live off of <code>src/</code> to reflect that they
 are the source code view of your application - they will later be copied to
@@ -120,7 +128,7 @@ message passing defined by its API to interact with and update the webpage.</p>
 <p>Web workers are a standard intended to enable the concurrent execution of
 multiple JavaScript threads - a prototypical use would be to <a href="http://dev.w3.org/html5/workers/#a-background-number-crunching-worker">calculate
 something computationally expensive (e.g. large prime numbers)</a>
-while not interfering with the user interface. freedom.js uses these workers as
+while not interfering with the user interface. <em>freedom.js</em> uses these workers as
 module containers, which combined with an enforced API leads to a clearer
 picture of the behavior of the overall application.</p>
 
@@ -134,14 +142,14 @@ for convenience.</p>
 <p>The functionality of the application is simple - click the button to increment
 the displayed count. The key insight is that the displayed count is part of the
 webpage and is updated through the DOM, but the incrementing itself occurs in
-the freedom.js module. Following is the program flow - see if you can find the
+the <em>freedom.js</em> module. Following is the program flow - see if you can find the
 lines of code corresponding to each step (answers are linked but see if you can
 first find the spots without peeking).</p>
 
 <ol>
-<li>The browser loads the page and freedom.js is loaded with a given manifest
+<li>The browser loads the page and <em>freedom.js</em> is loaded with a given manifest
 (<em><a href="https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L21-27">answer</a></em>)</li>
-<li>freedom.js running in the browser creates the initial freedom module object
+<li><em>freedom.js</em> running in the browser creates the initial freedom module object
 (<em><a href="https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L12">answer</a></em>)</li>
 <li>The freedom module itself is instantiated from the given starting value
 (<em><a href="https://github.com/freedomjs/freedom-starter/blob/master/src/freedom-module.js#L9-12">answer</a></em>)</li>
@@ -162,14 +170,14 @@ running in the browser, you need to be able to envision the divide between the
 code that interacts with the DOM (in this case <code>page.js</code>) and the code that
 runs in a web worker (in this case <code>freedom-module.js</code>). The former is
 responsible for both updating the visible page and handling user interaction
-with it, while the latter is responsible for running whatever freedom.js
+with it, while the latter is responsible for running whatever <em>freedom.js</em>
 application logic you create, storing state, and communicating that state wtih
 the code running directly in the browser. In this specific case, <code>page.js</code>
 knows about the button clicks and is responsible for updating the displayed
 count, while <code>freedom-module.js</code> knows the actual count value and increments
 and returns it when requested.</p>
 
-<p>The above addresses the starter code that is directly part of a freedom.js
+<p>The above addresses the starter code that is directly part of a <em>freedom.js</em>
 module. Depending on your choice of tooling, you may also have files like:</p>
 
 <pre><code>Gruntfile.js
@@ -186,11 +194,11 @@ documentation, as described below.</p>
 <p>Any piece of computer technology is inevitably built on a deep stack
 eventually going down to <a href="http://xkcd.com/1349/">sand and physics</a> -
 this tutorial focuses on giving you enough knowledge and context to
-develop freedom.js modules, but should you find yourself wanting to
+develop <em>freedom.js</em> modules, but should you find yourself wanting to
 dig deeper then here are some places to start:</p>
 
 <ul>
-<li><a href="https://github.com/freedomjs/freedom/wiki">freedom.js wiki</a> - more
+<li><a href="https://github.com/freedomjs/freedom/wiki"><em>freedom.js</em> wiki</a> - more
 documentation and API reference</li>
 <li><a href="https://docs.npmjs.com/">npm docs</a> - more on how to both get
 packages from npm and deploy your own</li>
@@ -202,7 +210,7 @@ is a quick interactive tutorial</li>
 </ul>
 
 <p>It&rsquo;s also valuable to learn about developing traditional (centralized)
-web applications. freedom.js requires thinking differently (especially
+web applications. <em>freedom.js</em> requires thinking differently (especially
 about data storage and peer communication), but it&rsquo;s useful to
 understand both perspectives. There is a fair amount of skill overlap
 (understanding templates, network requests, etc.), and for many

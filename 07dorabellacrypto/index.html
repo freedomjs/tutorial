@@ -17,13 +17,16 @@
   <link rel="stylesheet" href="http://www.freedomjs.org/tutorial/css/hyde-x.css">
   
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
   <link href="/favicon.png" rel="icon">
 
   
-  <link href="" rel="alternate" type="application/rss+xml" title="freedom.js tutorial &middot; UW Networks Lab" />
+  
+  
+  
 
   <meta name="description" content="Tutorial for freedom.js, a framework for peer-to-peer web apps">
   <meta name="keywords" content="javascript,freedom.js,decentralized,tutorial">
@@ -64,17 +67,22 @@
     </ul>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="https://github.com/freedomjs">GitHub</a></li>
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/freedomjs"><i class="fa fa-github-square fa-3x"></i></a>
       
       
       
       
+      
+      </li>
     </ul>
 
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
     <p>By <a href="http://netlab.cs.washington.edu/">UW Networks Labs</a>, <a href="http://www.freedomjs.org/tutorial/license">License</a><br/>
        Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
+
 
 <div class="content container">
   <div class="post">
@@ -82,7 +90,7 @@
     
 
 <p>In this section we will use the PGP api along with a trustworthy cryptography
-provider to employ signing/encryption and verifying/decryption in a freedom.js
+provider to employ signing/encryption and verifying/decryption in a <em>freedom.js</em>
 application.</p>
 
 <p><em>An aside</em> - you may be thinking &ldquo;isn&rsquo;t
@@ -108,7 +116,7 @@ and want to ensure those keys stay safe.</li>
 </ul>
 
 <p>Of course, the important remaining issue is that, if you use a
-freedom.js application by simply visiting a webpage, you are still
+<em>freedom.js</em> application by simply visiting a webpage, you are still
 trusting that server (and your connection to it) to deliver the true
 application on every page load. This can be mitigated by packaging the
 application (e.g. as a browser extension or mobile application),
@@ -128,10 +136,10 @@ better than &ldquo;no&rdquo; security.</p>
 <p>In other words:</p>
 
 <ul>
-<li><em>Do use crypto with freedom.js if</em> -  you want a bit more privacy
+<li><strong>Do use crypto with <em>freedom.js</em> if</strong> -  you want a bit more privacy
 and control over your data than you get with most existing web
 applications.</li>
-<li><em>Don&rsquo;t use crypto with freedom.js if</em> - you&rsquo;re planning a coup,
+<li><strong>Don&rsquo;t use crypto with <em>freedom.js</em> if</strong> - you&rsquo;re planning a coup,
 trying to hide from a modern nation-state, or want to stop the Men
 in Black from reading your thoughts.</li>
 </ul>
