@@ -5,7 +5,7 @@ title = "07 - Using crypto in freedom.js"
 +++
 
 In this section we will use the PGP api along with a trustworthy cryptography
-provider to employ signing/encryption and verifying/decryption in a freedom.js
+provider to employ signing/encryption and verifying/decryption in a *freedom.js*
 application.
 
 *An aside* - you may be thinking "isn't
@@ -29,7 +29,7 @@ application.
   and want to ensure those keys stay safe.
 
 Of course, the important remaining issue is that, if you use a
-freedom.js application by simply visiting a webpage, you are still
+*freedom.js* application by simply visiting a webpage, you are still
 trusting that server (and your connection to it) to deliver the true
 application on every page load. This can be mitigated by packaging the
 application (e.g. as a browser extension or mobile application),
@@ -48,10 +48,10 @@ better than "no" security.
 
 In other words:
 
-- *Do use crypto with freedom.js if* -  you want a bit more privacy
+- __Do use crypto with *freedom.js* if__ -  you want a bit more privacy
   and control over your data than you get with most existing web
   applications.
-- *Don't use crypto with freedom.js if* - you're planning a coup,
+- __Don't use crypto with *freedom.js* if__ - you're planning a coup,
   trying to hide from a modern nation-state, or want to stop the Men
   in Black from reading your thoughts.
 

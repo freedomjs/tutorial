@@ -18,7 +18,7 @@ username)
 
 On top of that, we want our particular chat application to sign and encrypt
 outgoing messages and verify and decrypt incoming ones. And since we're using
-freedom.js, we want to do all of this in as decentralized a manner as possible,
+*freedom.js*, we want to do all of this in as decentralized a manner as possible,
 while still building a pragmatic and usable application.
 
 Unfortunately the Internet has not settled on a decentralized social network,
@@ -30,9 +30,9 @@ users can choose between them more freely. And the encryption will also occur
 entirely on the client side, reducing the social network to a relatively
 uninformed and untrusted message passing channel.
 
-As we learned in [the previous section](../03howfreedomworks), freedom.js works
-by executing concurrent JavaScript threads in web workers that communicate via
-message passing. Each web worker is a freedom.js module that should have a
+As we learned in [the previous section](../03howfreedomworks), *freedom.js*
+works by executing concurrent JavaScript threads in web workers that communicate
+via message passing. Each web worker is a *freedom.js* module that should have a
 distinct purpose, and there is also typically at least some JavaScript executed
 directly in the browser (so it can interact with the user and the DOM). Let us
 consider separating our chat application into three modules (not counting the
@@ -43,7 +43,7 @@ direct-in-browser code):
 - A module to handle local client usage and state (essentially to connect the
 JavaScript running directly in the browser with the other two modules)
 
-Of these three, we only need to actually write the last one - freedom.js
+Of these three, we only need to actually write the last one - *freedom.js*
 provides a
 [social API](https://github.com/freedomjs/freedom/blob/master/interface/social.json)
 as well as some standard providers for us to get started, and we will be using
@@ -54,13 +54,13 @@ So our overall plan for the structure of Dorabella (from "front" to "back") is:
 
 - **User interface** - HTML, static resources (CSS, images)
 - **"Outer" JavaScript** - runs directly in browser and not a web worker,
-responsible for starting freedom.js, interacting with the main module, and
+responsible for starting *freedom.js*, interacting with the main module, and
 updating the DOM with new information (as well as general UI/UX niceties)
-- **Main freedom.js module** - core of Dorabella, receives messages from
+- **Main *freedom.js* module** - core of Dorabella, receives messages from
 "outer" JavaScript, uses social and crypto modules, and returns results
-- **Social API** - built-in freedom.js interface for finding and communicating
+- **Social API** - built-in *freedom.js* interface for finding and communicating
 with friends via a variety of social media services
-- **PGP API** - freedom.js module that provides PGP-style crypto functionality
+- **PGP API** - *freedom.js* module that provides PGP-style crypto functionality
 
 TODO diagram?
 
@@ -73,10 +73,10 @@ JavaScript, and ensuring that this API facilitates all needed uses of the other
 (social and crypto) modules.
 
 The API is specified from the point of view of the outer JavaScript, listing
-both methods that it can invoke on the instantiated freedom.js module and
+both methods that it can invoke on the instantiated *freedom.js* module and
 events from the module that can be listened for. The values for methods are
 arguments that are passed in, while the values for events contain whatever
-information the freedom.js module is sending to the outer page.
+information the *freedom.js* module is sending to the outer page.
 
 <table>
   <tr>
@@ -142,7 +142,14 @@ before settling on something like the above. You will find yourself referring
 back to the API throughout development, so it's worth making it clear and
 literate - not too short and not too long.
 
-TODO link to json manifest version of API
+Once a reasonable API has been decided, it should be added to the JSON manifest
+describing the application. [This is the Dorabella manifest]
+(https://github.com/soycode/dorabella/blob/master/src/securechat.json) - in
+addition to the API, it enumerates the files that Dorabella is composed of and
+its *freedom.js* dependencies (the social and PGP providers). The API described
+is labeled `chat`, and the *freedom.js* module we are writing provides an
+implementation of this API that is usable not only as a standalone application
+but potentially as a dependency to be embedded in a larger application.
 
 Now that we have the API under our belt, let's push on to implementation,
-starting with the core Dorabella freedom.js module.
+starting with the core Dorabella *freedom.js* module.

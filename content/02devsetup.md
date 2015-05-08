@@ -20,19 +20,19 @@ Or if you prefer pulling in boilerplate with git:
     mv freedom-starter my-freedom-app  # optional, rename as you wish
     cd my-freedom-app
 
-If you selected `webapp template` as the source for `freedom.js` in Yeoman
+If you selected `webapp template` as the source for *freedom.js* in Yeoman
 or if you used the `git clone` approach, then you can start the demo app with
 `./runserver` (you may need to `chmod +x runserver.sh` first to make it
 executable). If you used Yeoman and selected `npm` as the source for
-`freedom.js`, then the command `grunt demo` will start the demo app. In either
+*freedom.js*, then the command `grunt demo` will start the demo app. In either
 case, fire up a browser and head to http://localhost:8000/build/ to see it.
 
 If you're set, skip ahead to
-[how freedom.js works](../03howfreedomworks). Need a bit more
+[how *freedom.js* works](../03howfreedomworks). Need a bit more
 explanation on the above? Read on!
 
 # Details
-Strictly speaking, all you need to develop with freedom.js is the
+Strictly speaking, all you need to develop with *freedom.js* is the
 [library itself](http://www.freedomjs.org/dist/freedom/latest/freedom.js),
 a browser, and a web server (for example,
 [SimpleHTTPServer](https://docs.python.org/2/library/simplehttpserver.html)
@@ -46,13 +46,13 @@ but you really just need to familiarize yourself with a few of them to
 get started:
 
 - [npm](https://www.npmjs.com/) - a package manager (installed from
-  [nodejs.org](http://nodejs.org/)), lets you fetch freedom.js and
+  [nodejs.org](http://nodejs.org/)), lets you fetch *freedom.js* and
   related modules/dependencies/tooling
 - [grunt](http://gruntjs.com/) - a task runner, facilitates linting,
 building, testing, and deploying projects
 - ... (TODO testing, maybe alternatives like gulp, etc.)
 
-freedom.js is agnostic about the tools you use, but our provided
+*freedom.js* is agnostic about the tools you use, but our provided
 generators and scripts generally assume use of npm, grunt, TODO (tests
 etc.). Getting started means
 [installing node and npm](https://docs.npmjs.com/getting-started/installing-node),
@@ -71,4 +71,4 @@ just `grunt` for the default task. You can also dive into
 `Gruntfile.js` and edit or add your own tasks.
 
 Once you have your setup to your liking, continue on and learn more
-about freedom.js itself!
+about *freedom.js* itself!

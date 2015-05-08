@@ -21,9 +21,9 @@ you should now have a file hierarchy that looks something like this:
     src/static/freedomjs-icon.png
     src/static/style.css
 
-These files are your freedom.js module - they specify layout/browser
-logic (`index.html` and `page.js`), freedom.js application logic
-(`freedom-module.js`), freedom.js API and dependencies/permissions
+These files are your *freedom.js* module - they specify layout/browser
+logic (`index.html` and `page.js`), *freedom.js* application logic
+(`freedom-module.js`), *freedom.js* API and dependencies/permissions
 (`freedom-module.json`), and styling or other static resources such as graphics
 (`static/`). In the above list they all live off of `src/` to reflect that they
 are the source code view of your application - they will later be copied to
@@ -42,7 +42,7 @@ Web workers are a standard intended to enable the concurrent execution of
 multiple JavaScript threads - a prototypical use would be to [calculate
 something computationally expensive (e.g. large prime numbers)]
 (http://dev.w3.org/html5/workers/#a-background-number-crunching-worker)
-while not interfering with the user interface. freedom.js uses these workers as
+while not interfering with the user interface. *freedom.js* uses these workers as
 module containers, which combined with an enforced API leads to a clearer
 picture of the behavior of the overall application.
 
@@ -56,13 +56,13 @@ for convenience.
 The functionality of the application is simple - click the button to increment
 the displayed count. The key insight is that the displayed count is part of the
 webpage and is updated through the DOM, but the incrementing itself occurs in
-the freedom.js module. Following is the program flow - see if you can find the
+the *freedom.js* module. Following is the program flow - see if you can find the
 lines of code corresponding to each step (answers are linked but see if you can
 first find the spots without peeking).
 
-1. The browser loads the page and freedom.js is loaded with a given manifest
+1. The browser loads the page and *freedom.js* is loaded with a given manifest
 (*[answer](https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L21-27)*)
-2. freedom.js running in the browser creates the initial freedom module object
+2. *freedom.js* running in the browser creates the initial freedom module object
 (*[answer](https://github.com/freedomjs/freedom-starter/blob/master/src/page.js#L12)*)
 3. The freedom module itself is instantiated from the given starting value
 (*[answer](https://github.com/freedomjs/freedom-starter/blob/master/src/freedom-module.js#L9-12)*)
@@ -82,14 +82,14 @@ running in the browser, you need to be able to envision the divide between the
 code that interacts with the DOM (in this case `page.js`) and the code that
 runs in a web worker (in this case `freedom-module.js`). The former is
 responsible for both updating the visible page and handling user interaction
-with it, while the latter is responsible for running whatever freedom.js
+with it, while the latter is responsible for running whatever *freedom.js*
 application logic you create, storing state, and communicating that state wtih
 the code running directly in the browser. In this specific case, `page.js`
 knows about the button clicks and is responsible for updating the displayed
 count, while `freedom-module.js` knows the actual count value and increments
 and returns it when requested.
 
-The above addresses the starter code that is directly part of a freedom.js
+The above addresses the starter code that is directly part of a *freedom.js*
 module. Depending on your choice of tooling, you may also have files like:
 
     Gruntfile.js
@@ -104,10 +104,10 @@ documentation, as described below.
 Any piece of computer technology is inevitably built on a deep stack
 eventually going down to [sand and physics](http://xkcd.com/1349/) -
 this tutorial focuses on giving you enough knowledge and context to
-develop freedom.js modules, but should you find yourself wanting to
+develop *freedom.js* modules, but should you find yourself wanting to
 dig deeper then here are some places to start:
 
-- [freedom.js wiki](https://github.com/freedomjs/freedom/wiki) - more
+- [*freedom.js* wiki](https://github.com/freedomjs/freedom/wiki) - more
 documentation and API reference
 - [npm docs](https://docs.npmjs.com/) - more on how to both get
 packages from npm and deploy your own
@@ -118,7 +118,7 @@ is a quick interactive tutorial
 - TODO more
 
 It's also valuable to learn about developing traditional (centralized)
-web applications. freedom.js requires thinking differently (especially
+web applications. *freedom.js* requires thinking differently (especially
 about data storage and peer communication), but it's useful to
 understand both perspectives. There is a fair amount of skill overlap
 (understanding templates, network requests, etc.), and for many
