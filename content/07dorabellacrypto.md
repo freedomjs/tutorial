@@ -21,8 +21,8 @@ application.
   provider we'll be using depends on Google's
   [End-to-End](https://github.com/google/end-to-end), which implements
   Elliptic Curve Cryptography and is also
-  [being used by Yahoo Mail](http://yahoo.tumblr.com/post/113708033335/user-focused-security-end-to-end-encryption). The
-  PGP api also can be used with other providers, if you prefer.
+  [being used by Yahoo Mail](http://yahoo.tumblr.com/post/113708033335/user-focused-security-end-to-end-encryption).
+  The PGP api also can be used with other providers, if you prefer.
 - **We generate the keypair locally and don't let you export the
   private key** - we
   [generate keys with secure parameters](https://github.com/freedomjs/freedom-pgp-e2e/issues/25)
@@ -52,7 +52,7 @@ In other words:
   and control over your data than you get with most existing web
   applications.
 - __Don't use crypto with *freedom.js* if__ - you're planning a coup,
-  trying to hide from a modern nation-state, or want to stop the Men
+  defending yourself from an Advanced Persistent Threat, or want to stop the Men
   in Black from reading your thoughts.
 
 # Getting and loading the freedom-pgp-e2e module
