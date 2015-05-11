@@ -85,5 +85,35 @@ from the `freedom` object within its own module code. The resulting object will
 satisfy the PGP API, allowing us to get started securing our chat application.
 
 # Setting up the crypto client and handling keys
+The PGP API has a setup command that takes two arguments - a passphrase and a
+user ID. The passphrase is used to encrypt the local storage of the keyring,
+while the user ID is used to identify the keyring. Classically these are how
+a user would protect their keyring and associate it with an email - the user ID
+format is `name <email>`.
+
+The *Dorabella* use case is slightly different than email - users connect
+automatically through a social API. We can grab the user name from this, and
+to complete the user ID we choose to provide a default filler email address.
+[The email address](https://github.com/soycode/dorabella/blob/master/src/securechat.js#L53)
+just serves to indicate that the software is dependent on `freedom.js`, while
+not inconveniencing or exposing the user unnecessarily.
+
+Looking at the setup line, you may also notice that we provide a blank
+passphrase (the first argument) - this is a conscious choice and accepting a
+particular threat model for *Dorabella* - namely, we assume that the local
+machine is trusted and secure. Encrypting the local keyring is obviously worthy
+for more broad PGP use cases, as well as situations where you expect to travel
+or otherwise potentially expose your keyring to risk. With *Dorabella*, the
+keyring is generated specifically for the application and the API provides no
+method for exporting the private key - this limits the risk of not encrypting
+it, and not asking the user for a passphrase increases the convenience of the
+application.
+
+This security-convenience tradeoff is an inevitable part of the design of any
+security-sensitive application, and you may well personally prefer a different
+choice. A worthy extension of *Dorabella* would be to optionally accept a
+passphrase, allowing more security-conscious users to better address their
+threat models. For now though, we will set up with the blank passphrase and
+focus on how to properly use the API after the setup is complete.
 
 # Using the crypto API to exchange secure messages
