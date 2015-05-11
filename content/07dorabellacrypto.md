@@ -84,7 +84,7 @@ To actually use the PGP API, the *Dorabella* API must
 from the `freedom` object within its own module code. The resulting object will
 satisfy the PGP API, allowing us to get started securing our chat application.
 
-# Setting up the crypto client and handling keys
+# Setting up the crypto client
 The PGP API has a setup command that takes two arguments - a passphrase and a
 user ID. The passphrase is used to encrypt the local storage of the keyring,
 while the user ID is used to identify the keyring. Classically these are how
@@ -116,4 +116,16 @@ passphrase, allowing more security-conscious users to better address their
 threat models. For now though, we will set up with the blank passphrase and
 focus on how to properly use the API after the setup is complete.
 
-# Using the crypto API to exchange secure messages
+# Exchanging keys
+TODO - `exportKey` gets the public key, and currently users automatically
+exchange on connection. This means that messages are at least encrypted, but
+no out-of-band trust is established in the key.
+
+# Using the PGP API to exchange secure messages
+The workhorse methods of the PGP API are `signEncrypt` and `verifyDecrypt` -
+these operations do what they say on the tin. Specifically, `signEncrypt` can
+sign and/or encrypt a message, and `verifyDecrypt` can verify and/or decrypt.
+For *Dorabella* we will be both authenticating (signing/verifying) and securely
+encoding (encrypting/decrypting) the messages.
+
+TODO finish, also address armoring/dearmoring
