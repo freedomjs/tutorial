@@ -589,7 +589,7 @@ and make sure it provides all the necessary information and interaction.&lt;/p&g
       <guid>http://www.freedomjs.org/tutorial/07dorabellacrypto/</guid>
       <description>
 
-&lt;p&gt;In this section we will use the PGP api along with a trustworthy cryptography
+&lt;p&gt;In this section we will use the PGP API along with a trustworthy cryptography
 provider to employ signing/encryption and verifying/decryption in a &lt;em&gt;freedom.js&lt;/em&gt;
 application.&lt;/p&gt;
 
@@ -607,8 +607,8 @@ communicate with the DOM via message passing, and reduces the
 provider we&amp;rsquo;ll be using depends on Google&amp;rsquo;s
 &lt;a href=&#34;https://github.com/google/end-to-end&#34;&gt;End-to-End&lt;/a&gt;, which implements
 Elliptic Curve Cryptography and is also
-&lt;a href=&#34;http://yahoo.tumblr.com/post/113708033335/user-focused-security-end-to-end-encryption&#34;&gt;being used by Yahoo Mail&lt;/a&gt;. The
-PGP api also can be used with other providers, if you prefer.&lt;/li&gt;
+&lt;a href=&#34;http://yahoo.tumblr.com/post/113708033335/user-focused-security-end-to-end-encryption&#34;&gt;being used by Yahoo Mail&lt;/a&gt;.
+The PGP API also can be used with other providers, if you prefer.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;We generate the keypair locally and don&amp;rsquo;t let you export the
 private key&lt;/strong&gt; - we
 &lt;a href=&#34;https://github.com/freedomjs/freedom-pgp-e2e/issues/25&#34;&gt;generate keys with secure parameters&lt;/a&gt;
@@ -640,15 +640,89 @@ better than &amp;ldquo;no&amp;rdquo; security.&lt;/p&gt;
 and control over your data than you get with most existing web
 applications.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Don&amp;rsquo;t use crypto with &lt;em&gt;freedom.js&lt;/em&gt; if&lt;/strong&gt; - you&amp;rsquo;re planning a coup,
-trying to hide from a modern nation-state, or want to stop the Men
+defending yourself from an Advanced Persistent Threat, or want to stop the Men
 in Black from reading your thoughts.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&#34;getting-and-loading-the-freedom-pgp-e2e-module:7108d1b3d7ac5e58ba47367acc1ab71f&#34;&gt;Getting and loading the freedom-pgp-e2e module&lt;/h1&gt;
 
-&lt;h1 id=&#34;setting-up-the-crypto-client-and-handling-keys:7108d1b3d7ac5e58ba47367acc1ab71f&#34;&gt;Setting up the crypto client and handling keys&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;freedom-pgp-e2e&lt;/code&gt; is a &lt;em&gt;freedom.js&lt;/em&gt; module that takes care of setting up and
+properly invoking the crypto operations implemented by End-to-End.
+&lt;a href=&#34;https://www.npmjs.com/package/freedom-pgp-e2e&#34;&gt;It is available on npm&lt;/a&gt;, and
+can be added to your project by running:&lt;/p&gt;
 
-&lt;h1 id=&#34;using-the-crypto-api-to-exchange-secure-messages:7108d1b3d7ac5e58ba47367acc1ab71f&#34;&gt;Using the crypto API to exchange secure messages&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;npm install --save-dev freedom freedom-pgp-e2e
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This installs the package to the &lt;code&gt;node_modules/&lt;/code&gt; path, along with your other
+dependencies. You can then add rules to your Gruntfile to automatically copy the
+needed files.
+&lt;a href=&#34;https://github.com/soycode/dorabella/blob/master/Gruntfile.js#L5-6&#34;&gt;The &lt;code&gt;path&lt;/code&gt; package can find the files&lt;/a&gt;
+, and
+&lt;a href=&#34;https://github.com/soycode/dorabella/blob/master/Gruntfile.js#L34-41&#34;&gt;simple copy rules can copy them&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In particular, you need the contents of the &lt;code&gt;dist/&lt;/code&gt; path within the package -
+this includes both the End-to-End library (&lt;code&gt;end-to-end.compiled.js&lt;/code&gt;), the
+&lt;em&gt;freedom.js&lt;/em&gt; PGP API (&lt;code&gt;pgpapi.json&lt;/code&gt;), and the actual &lt;code&gt;freedom-pgp-e2e&lt;/code&gt;
+implementation (&lt;code&gt;e2e.js&lt;/code&gt;). The API is worth reading to understand its usage -
+the &lt;code&gt;&amp;quot;_comment&amp;quot;&lt;/code&gt; fields are optional and don&amp;rsquo;t change functionality but do serve
+to document the purpose of methods.&lt;/p&gt;
+
+&lt;p&gt;To actually use the PGP API, the &lt;em&gt;Dorabella&lt;/em&gt; API must
+&lt;a href=&#34;https://github.com/soycode/dorabella/blob/master/src/securechat.json#L17-20&#34;&gt;specify its dependence on it&lt;/a&gt;
+, referring to the path it is copied to in the Gruntfile, and then
+&lt;a href=&#34;https://github.com/soycode/dorabella/blob/master/src/securechat.js#L27&#34;&gt;create a PGP object&lt;/a&gt;
+from the &lt;code&gt;freedom&lt;/code&gt; object within its own module code. The resulting object will
+satisfy the PGP API, allowing us to get started securing our chat application.&lt;/p&gt;
+
+&lt;h1 id=&#34;setting-up-the-crypto-client:7108d1b3d7ac5e58ba47367acc1ab71f&#34;&gt;Setting up the crypto client&lt;/h1&gt;
+
+&lt;p&gt;The PGP API has a setup command that takes two arguments - a passphrase and a
+user ID. The passphrase is used to encrypt the local storage of the keyring,
+while the user ID is used to identify the keyring. Classically these are how
+a user would protect their keyring and associate it with an email - the user ID
+format is &lt;code&gt;name &amp;lt;email&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;Dorabella&lt;/em&gt; use case is slightly different than email - users connect
+automatically through a social API. We can grab the user name from this, and
+to complete the user ID we choose to provide a default filler email address.
+&lt;a href=&#34;https://github.com/soycode/dorabella/blob/master/src/securechat.js#L53&#34;&gt;The email address&lt;/a&gt;
+just serves to indicate that the software is dependent on &lt;code&gt;freedom.js&lt;/code&gt;, while
+not inconveniencing or exposing the user unnecessarily.&lt;/p&gt;
+
+&lt;p&gt;Looking at the setup line, you may also notice that we provide a blank
+passphrase (the first argument) - this is a conscious choice and accepting a
+particular threat model for &lt;em&gt;Dorabella&lt;/em&gt; - namely, we assume that the local
+machine is trusted and secure. Encrypting the local keyring is obviously worthy
+for more broad PGP use cases, as well as situations where you expect to travel
+or otherwise potentially expose your keyring to risk. With &lt;em&gt;Dorabella&lt;/em&gt;, the
+keyring is generated specifically for the application and the API provides no
+method for exporting the private key - this limits the risk of not encrypting
+it, and not asking the user for a passphrase increases the convenience of the
+application.&lt;/p&gt;
+
+&lt;p&gt;This security-convenience tradeoff is an inevitable part of the design of any
+security-sensitive application, and you may well personally prefer a different
+choice. A worthy extension of &lt;em&gt;Dorabella&lt;/em&gt; would be to optionally accept a
+passphrase, allowing more security-conscious users to better address their
+threat models. For now though, we will set up with the blank passphrase and
+focus on how to properly use the API after the setup is complete.&lt;/p&gt;
+
+&lt;h1 id=&#34;exchanging-keys:7108d1b3d7ac5e58ba47367acc1ab71f&#34;&gt;Exchanging keys&lt;/h1&gt;
+
+&lt;p&gt;TODO - &lt;code&gt;exportKey&lt;/code&gt; gets the public key, and currently users automatically
+exchange on connection. This means that messages are at least encrypted, but
+no out-of-band trust is established in the key.&lt;/p&gt;
+
+&lt;h1 id=&#34;using-the-pgp-api-to-exchange-secure-messages:7108d1b3d7ac5e58ba47367acc1ab71f&#34;&gt;Using the PGP API to exchange secure messages&lt;/h1&gt;
+
+&lt;p&gt;The workhorse methods of the PGP API are &lt;code&gt;signEncrypt&lt;/code&gt; and &lt;code&gt;verifyDecrypt&lt;/code&gt; -
+these operations do what they say on the tin. Specifically, &lt;code&gt;signEncrypt&lt;/code&gt; can
+sign and/or encrypt a message, and &lt;code&gt;verifyDecrypt&lt;/code&gt; can verify and/or decrypt.
+For &lt;em&gt;Dorabella&lt;/em&gt; we will be both authenticating (signing/verifying) and securely
+encoding (encrypting/decrypting) the messages.&lt;/p&gt;
+
+&lt;p&gt;TODO finish, also address armoring/dearmoring&lt;/p&gt;
 </description>
     </item>
     

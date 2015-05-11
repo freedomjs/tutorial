@@ -88,7 +88,7 @@
     <h1>07 - Using crypto in freedom.js</h1>
     
 
-<p>In this section we will use the PGP api along with a trustworthy cryptography
+<p>In this section we will use the PGP API along with a trustworthy cryptography
 provider to employ signing/encryption and verifying/decryption in a <em>freedom.js</em>
 application.</p>
 
@@ -106,8 +106,8 @@ communicate with the DOM via message passing, and reduces the
 provider we&rsquo;ll be using depends on Google&rsquo;s
 <a href="https://github.com/google/end-to-end">End-to-End</a>, which implements
 Elliptic Curve Cryptography and is also
-<a href="http://yahoo.tumblr.com/post/113708033335/user-focused-security-end-to-end-encryption">being used by Yahoo Mail</a>. The
-PGP api also can be used with other providers, if you prefer.</li>
+<a href="http://yahoo.tumblr.com/post/113708033335/user-focused-security-end-to-end-encryption">being used by Yahoo Mail</a>.
+The PGP API also can be used with other providers, if you prefer.</li>
 <li><strong>We generate the keypair locally and don&rsquo;t let you export the
 private key</strong> - we
 <a href="https://github.com/freedomjs/freedom-pgp-e2e/issues/25">generate keys with secure parameters</a>
@@ -139,15 +139,89 @@ better than &ldquo;no&rdquo; security.</p>
 and control over your data than you get with most existing web
 applications.</li>
 <li><strong>Don&rsquo;t use crypto with <em>freedom.js</em> if</strong> - you&rsquo;re planning a coup,
-trying to hide from a modern nation-state, or want to stop the Men
+defending yourself from an Advanced Persistent Threat, or want to stop the Men
 in Black from reading your thoughts.</li>
 </ul>
 
 <h1 id="getting-and-loading-the-freedom-pgp-e2e-module:7108d1b3d7ac5e58ba47367acc1ab71f">Getting and loading the freedom-pgp-e2e module</h1>
 
-<h1 id="setting-up-the-crypto-client-and-handling-keys:7108d1b3d7ac5e58ba47367acc1ab71f">Setting up the crypto client and handling keys</h1>
+<p><code>freedom-pgp-e2e</code> is a <em>freedom.js</em> module that takes care of setting up and
+properly invoking the crypto operations implemented by End-to-End.
+<a href="https://www.npmjs.com/package/freedom-pgp-e2e">It is available on npm</a>, and
+can be added to your project by running:</p>
 
-<h1 id="using-the-crypto-api-to-exchange-secure-messages:7108d1b3d7ac5e58ba47367acc1ab71f">Using the crypto API to exchange secure messages</h1>
+<pre><code>npm install --save-dev freedom freedom-pgp-e2e
+</code></pre>
+
+<p>This installs the package to the <code>node_modules/</code> path, along with your other
+dependencies. You can then add rules to your Gruntfile to automatically copy the
+needed files.
+<a href="https://github.com/soycode/dorabella/blob/master/Gruntfile.js#L5-6">The <code>path</code> package can find the files</a>
+, and
+<a href="https://github.com/soycode/dorabella/blob/master/Gruntfile.js#L34-41">simple copy rules can copy them</a>.</p>
+
+<p>In particular, you need the contents of the <code>dist/</code> path within the package -
+this includes both the End-to-End library (<code>end-to-end.compiled.js</code>), the
+<em>freedom.js</em> PGP API (<code>pgpapi.json</code>), and the actual <code>freedom-pgp-e2e</code>
+implementation (<code>e2e.js</code>). The API is worth reading to understand its usage -
+the <code>&quot;_comment&quot;</code> fields are optional and don&rsquo;t change functionality but do serve
+to document the purpose of methods.</p>
+
+<p>To actually use the PGP API, the <em>Dorabella</em> API must
+<a href="https://github.com/soycode/dorabella/blob/master/src/securechat.json#L17-20">specify its dependence on it</a>
+, referring to the path it is copied to in the Gruntfile, and then
+<a href="https://github.com/soycode/dorabella/blob/master/src/securechat.js#L27">create a PGP object</a>
+from the <code>freedom</code> object within its own module code. The resulting object will
+satisfy the PGP API, allowing us to get started securing our chat application.</p>
+
+<h1 id="setting-up-the-crypto-client:7108d1b3d7ac5e58ba47367acc1ab71f">Setting up the crypto client</h1>
+
+<p>The PGP API has a setup command that takes two arguments - a passphrase and a
+user ID. The passphrase is used to encrypt the local storage of the keyring,
+while the user ID is used to identify the keyring. Classically these are how
+a user would protect their keyring and associate it with an email - the user ID
+format is <code>name &lt;email&gt;</code>.</p>
+
+<p>The <em>Dorabella</em> use case is slightly different than email - users connect
+automatically through a social API. We can grab the user name from this, and
+to complete the user ID we choose to provide a default filler email address.
+<a href="https://github.com/soycode/dorabella/blob/master/src/securechat.js#L53">The email address</a>
+just serves to indicate that the software is dependent on <code>freedom.js</code>, while
+not inconveniencing or exposing the user unnecessarily.</p>
+
+<p>Looking at the setup line, you may also notice that we provide a blank
+passphrase (the first argument) - this is a conscious choice and accepting a
+particular threat model for <em>Dorabella</em> - namely, we assume that the local
+machine is trusted and secure. Encrypting the local keyring is obviously worthy
+for more broad PGP use cases, as well as situations where you expect to travel
+or otherwise potentially expose your keyring to risk. With <em>Dorabella</em>, the
+keyring is generated specifically for the application and the API provides no
+method for exporting the private key - this limits the risk of not encrypting
+it, and not asking the user for a passphrase increases the convenience of the
+application.</p>
+
+<p>This security-convenience tradeoff is an inevitable part of the design of any
+security-sensitive application, and you may well personally prefer a different
+choice. A worthy extension of <em>Dorabella</em> would be to optionally accept a
+passphrase, allowing more security-conscious users to better address their
+threat models. For now though, we will set up with the blank passphrase and
+focus on how to properly use the API after the setup is complete.</p>
+
+<h1 id="exchanging-keys:7108d1b3d7ac5e58ba47367acc1ab71f">Exchanging keys</h1>
+
+<p>TODO - <code>exportKey</code> gets the public key, and currently users automatically
+exchange on connection. This means that messages are at least encrypted, but
+no out-of-band trust is established in the key.</p>
+
+<h1 id="using-the-pgp-api-to-exchange-secure-messages:7108d1b3d7ac5e58ba47367acc1ab71f">Using the PGP API to exchange secure messages</h1>
+
+<p>The workhorse methods of the PGP API are <code>signEncrypt</code> and <code>verifyDecrypt</code> -
+these operations do what they say on the tin. Specifically, <code>signEncrypt</code> can
+sign and/or encrypt a message, and <code>verifyDecrypt</code> can verify and/or decrypt.
+For <em>Dorabella</em> we will be both authenticating (signing/verifying) and securely
+encoding (encrypting/decrypting) the messages.</p>
+
+<p>TODO finish, also address armoring/dearmoring</p>
 
   </div>
   
