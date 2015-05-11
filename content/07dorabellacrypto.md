@@ -4,7 +4,7 @@ menu = "main"
 title = "07 - Using crypto in freedom.js"
 +++
 
-In this section we will use the PGP api along with a trustworthy cryptography
+In this section we will use the PGP API along with a trustworthy cryptography
 provider to employ signing/encryption and verifying/decryption in a *freedom.js*
 application.
 
@@ -22,7 +22,7 @@ application.
   [End-to-End](https://github.com/google/end-to-end), which implements
   Elliptic Curve Cryptography and is also
   [being used by Yahoo Mail](http://yahoo.tumblr.com/post/113708033335/user-focused-security-end-to-end-encryption).
-  The PGP api also can be used with other providers, if you prefer.
+  The PGP API also can be used with other providers, if you prefer.
 - **We generate the keypair locally and don't let you export the
   private key** - we
   [generate keys with secure parameters](https://github.com/freedomjs/freedom-pgp-e2e/issues/25)
@@ -56,6 +56,33 @@ In other words:
   in Black from reading your thoughts.
 
 # Getting and loading the freedom-pgp-e2e module
+`freedom-pgp-e2e` is a *freedom.js* module that takes care of setting up and
+properly invoking the crypto operations implemented by End-to-End.
+[It is available on npm](https://www.npmjs.com/package/freedom-pgp-e2e), and
+can be added to your project by running:
+
+    npm install --save-dev freedom freedom-pgp-e2e
+
+This installs the package to the `node_modules/` path, along with your other
+dependencies. You can then add rules to your Gruntfile to automatically copy the
+needed files.
+[The `path` package can find the files](https://github.com/soycode/dorabella/blob/master/Gruntfile.js#L5-6)
+, and
+[simple copy rules can copy them](https://github.com/soycode/dorabella/blob/master/Gruntfile.js#L34-41).
+
+In particular, you need the contents of the `dist/` path within the package -
+this includes both the End-to-End library (`end-to-end.compiled.js`), the
+*freedom.js* PGP API (`pgpapi.json`), and the actual `freedom-pgp-e2e`
+implementation (`e2e.js`). The API is worth reading to understand its usage -
+the `"_comment"` fields are optional and don't change functionality but do serve
+to document the purpose of methods.
+
+To actually use the PGP API, the *Dorabella* API must
+[specify its dependence on it](https://github.com/soycode/dorabella/blob/master/src/securechat.json#L17-20)
+, referring to the path it is copied to in the Gruntfile, and then
+[create a PGP object](https://github.com/soycode/dorabella/blob/master/src/securechat.js#L27)
+from the `freedom` object within its own module code. The resulting object will
+satisfy the PGP API, allowing us to get started securing our chat application.
 
 # Setting up the crypto client and handling keys
 
