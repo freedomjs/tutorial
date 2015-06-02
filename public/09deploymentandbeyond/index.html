@@ -10,11 +10,11 @@
   <title>09 - Deployment and Beyond &middot; UW Networks Lab</title>
 
   
-  <link rel="stylesheet" href="http://www.freedomjs.org/tutorial/css/poole.css">
-  <link rel="stylesheet" href="http://www.freedomjs.org/tutorial/css/hyde.css">
-  <link rel="stylesheet" href="http://www.freedomjs.org/tutorial/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://www.freedomjs.org/tutorial/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://www.freedomjs.org/tutorial/css/hyde-x.css">
+  <link rel="stylesheet" href="http://www.freedomjs.org/tutorial//css/poole.css">
+  <link rel="stylesheet" href="http://www.freedomjs.org/tutorial//css/hyde.css">
+  <link rel="stylesheet" href="http://www.freedomjs.org/tutorial//css/poole-overrides.css">
+  <link rel="stylesheet" href="http://www.freedomjs.org/tutorial//css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://www.freedomjs.org/tutorial//css/hyde-x.css">
   
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -42,7 +42,7 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://www.freedomjs.org/tutorial/">Front</a></li>
+      <li class="sidebar-nav-item"><a href="http://www.freedomjs.org/tutorial//">Front</a></li>
       
       <li class="sidebar-nav-item"><a href="/tutorial/01introduction/">01 - Introduction</a></li>
       
@@ -77,7 +77,7 @@
       </li>
     </ul>
 
-    <p>By <a href="http://netlab.cs.washington.edu/">UW Networks Labs</a>, <a href="http://www.freedomjs.org/tutorial/license">License</a><br/>
+    <p>By <a href="http://netlab.cs.washington.edu/">UW Networks Labs</a>, <a href="http://www.freedomjs.org/tutorial//license">License</a><br/>
        Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/freedomjs/hyde-x">Hyde-X</a></p>
   </div>
 </div>
@@ -86,7 +86,33 @@
 <div class="content container">
   <div class="post">
     <h1>09 - Deployment and Beyond</h1>
-    
+    <p>Deploying a <em>freedom.js</em> application is as easy as serving the static resources
+that compose it. As an example, we will use
+<a href="https://pages.github.com/">GitHub Pages</a> as a convenient static host that can
+be deployed right along side your application repository.</p>
+
+<p>To use GitHub pages we just need to:</p>
+
+<ul>
+<li>Create a <code>dist</code> directory containing what we want to deploy</li>
+<li>Set up a <code>gh-pages</code> branch as a subtree of the master repository</li>
+<li>(Optional) provide a CNAME file so we can use our own domain</li>
+<li>(Optional but good idea) automate the deploy process with e.g. a Grunt task</li>
+</ul>
+
+<p>You can
+<a href="https://help.github.com/categories/github-pages-basics/">read GitHub document</a>
+for more details, and in general these principles should apply to other static
+hosts.</p>
+
+<p>We will use
+<a href="https://www.npmjs.com/package/grunt-build-control">grunt-build-control</a> to
+facilitate the process. <code>grunt-build-control</code> makes it simple to set up and
+manage branches. The Grunt task needs to specify a remote target as well as
+related options (the local directory to commit, the message to add, etc.).
+<a href="https://github.com/soycode/dorabella/blob/master/Gruntfile.js#L76-90">See the Dorabella task</a>
+as an example.</p>
+
   </div>
   
     <a href="http://www.freedomjs.org/tutorial/08dorabellapolish/">08 - Polishing Dorabella</a>
