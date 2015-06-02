@@ -741,7 +741,33 @@ encoding (encrypting/decrypting) the messages.&lt;/p&gt;
       <pubDate>Thu, 26 Feb 2015 13:21:22 -0800</pubDate>
       
       <guid>http://www.freedomjs.org/tutorial/09deploymentandbeyond/</guid>
-      <description></description>
+      <description>&lt;p&gt;Deploying a &lt;em&gt;freedom.js&lt;/em&gt; application is as easy as serving the static resources
+that compose it. As an example, we will use
+&lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt; as a convenient static host that can
+be deployed right along side your application repository.&lt;/p&gt;
+
+&lt;p&gt;To use GitHub pages we just need to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Create a &lt;code&gt;dist&lt;/code&gt; directory containing what we want to deploy&lt;/li&gt;
+&lt;li&gt;Set up a &lt;code&gt;gh-pages&lt;/code&gt; branch as a subtree of the master repository&lt;/li&gt;
+&lt;li&gt;(Optional) provide a CNAME file so we can use our own domain&lt;/li&gt;
+&lt;li&gt;(Optional but good idea) automate the deploy process with e.g. a Grunt task&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can
+&lt;a href=&#34;https://help.github.com/categories/github-pages-basics/&#34;&gt;read GitHub document&lt;/a&gt;
+for more details, and in general these principles should apply to other static
+hosts.&lt;/p&gt;
+
+&lt;p&gt;We will use
+&lt;a href=&#34;https://www.npmjs.com/package/grunt-build-control&#34;&gt;grunt-build-control&lt;/a&gt; to
+facilitate the process. &lt;code&gt;grunt-build-control&lt;/code&gt; makes it simple to set up and
+manage branches. The Grunt task needs to specify a remote target as well as
+related options (the local directory to commit, the message to add, etc.).
+&lt;a href=&#34;https://github.com/soycode/dorabella/blob/master/Gruntfile.js#L76-90&#34;&gt;See the Dorabella task&lt;/a&gt;
+as an example.&lt;/p&gt;
+</description>
     </item>
     
     <item>
