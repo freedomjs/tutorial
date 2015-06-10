@@ -595,9 +595,9 @@ application.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;An aside&lt;/em&gt; - you may be thinking &amp;ldquo;isn&amp;rsquo;t
  &lt;a href=&#34;http://matasano.com/articles/javascript-cryptography/&#34;&gt;JavaScript cryptography considered harmful&lt;/a&gt;?&amp;rdquo;
- For some applications and threat models it surely is, but we believe
- our purpose and usage of it here is appropriate for a few key
- reasons:&lt;/p&gt;
+ For some applications and threat models it surely is, but
+ &lt;a href=&#34;http://vnhacker.blogspot.co.uk/2014/06/why-javascript-crypto-is-useful.html&#34;&gt;it can also be useful&lt;/a&gt;,
+ and our purpose and usage of it here is appropriate for a few key reasons:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Our modules run in web workers&lt;/strong&gt; - this means they can only
