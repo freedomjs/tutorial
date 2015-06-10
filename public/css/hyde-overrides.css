@@ -18,7 +18,7 @@
 @media (min-width: 48em) {
     .sidebar-sticky {
         top:  1rem;
-        overflow-y: auto;
+        overflow-y: scroll;
         overflow-x: hidden;
         height: 100%;
     }
