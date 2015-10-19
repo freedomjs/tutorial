@@ -1,9 +1,10 @@
-baseurl = "http://www.freedomjs.org/tutorial/"
+baseURL = "http://www.freedomjs.org/tutorial/"
 languageCode = "en-us"
 title = "freedom.js tutorial"
 
 [params]
   defaultDescription = "Tutorial for freedom.js, a framework for peer-to-peer web apps"
+  home = "Front"
   defaultKeywords = "javascript,freedom.js,decentralized,tutorial"
   theme = "theme-base-08"
   github = "https://github.com/freedomjs"
