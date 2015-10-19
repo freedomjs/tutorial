@@ -594,7 +594,7 @@ provider to employ signing/encryption and verifying/decryption in a &lt;em&gt;fr
 application.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;An aside&lt;/em&gt; - you may be thinking &amp;ldquo;isn&amp;rsquo;t
- &lt;a href=&#34;http://matasano.com/articles/javascript-cryptography/&#34;&gt;JavaScript cryptography considered harmful&lt;/a&gt;?&amp;rdquo;
+ &lt;a href=&#34;https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful/&#34;&gt;JavaScript cryptography considered harmful&lt;/a&gt;&amp;rdquo;?
  For some applications and threat models it surely is, but
  &lt;a href=&#34;http://vnhacker.blogspot.co.uk/2014/06/why-javascript-crypto-is-useful.html&#34;&gt;it can also be useful&lt;/a&gt;,
  and our purpose and usage of it here is appropriate for a few key reasons:&lt;/p&gt;
