@@ -9,7 +9,7 @@ provider to employ signing/encryption and verifying/decryption in a *freedom.js*
 application.
 
 *An aside* - you may be thinking "isn't
- [JavaScript cryptography considered harmful](http://matasano.com/articles/javascript-cryptography/)?"
+ [JavaScript cryptography considered harmful](https://www.nccgroup.trust/us/about-us/newsroom-and-events/blog/2011/august/javascript-cryptography-considered-harmful/)"?
  For some applications and threat models it surely is, but
  [it can also be useful](http://vnhacker.blogspot.co.uk/2014/06/why-javascript-crypto-is-useful.html),
  and our purpose and usage of it here is appropriate for a few key reasons:
