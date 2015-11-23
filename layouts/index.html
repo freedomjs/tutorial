@@ -1,0 +1,22 @@
+{{ partial "head.html" . }}
+<div class="content container">
+  <h1 class="post-title">{{.Site.Params.frontheader}}</h1>
+  <br/>
+  <p>{{.Site.Params.frontpitch}}</p>
+  <p>{{.Site.Params.frontdescription}}</p>
+  <p><a href="01introduction/">Read the introduction</a> to get
+  started - Happy Hacking!</p>
+</div>
+
+{{ with .Site.DisqusShortname }}
+<script type="text/javascript">
+var disqus_shortname = {{ . }};
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+{{ end }}
+{{ partial "foot.html" . }}

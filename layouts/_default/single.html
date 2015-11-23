@@ -1,0 +1,14 @@
+{{ partial "head.html" . }}
+<div class="content container">
+  <div class="post">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+  </div>
+  {{ if .Prev }}
+    <a href="{{ .Prev.Permalink }}">{{ .Prev.Title }}</a>
+  {{ end }} ---
+  {{ if .Next }}
+    <a href="{{ .Next.Permalink }}">{{ .Next.Title }}</a>
+  {{ end }}
+</div>
+{{ partial "foot.html" . }}
